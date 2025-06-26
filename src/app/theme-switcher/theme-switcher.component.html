@@ -2,5 +2,6 @@
     <img 
         [src]="themeSwitcher.isLightTheme ? 'assets/images/theme/dark.svg' : 'assets/images/theme/light.svg'" 
         [alt]="themeSwitcher.isLightTheme ? 'dark theme': 'light theme'"
-        (click)="toggleTheme()">
+        [class]="themeSwitcher.themeClass"
+        (click)="toggleTheme()" />
 </div>
