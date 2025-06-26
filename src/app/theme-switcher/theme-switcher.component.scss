@@ -1,11 +1,16 @@
 .theme-switcher {
     img {
         border-radius: 100%;
-        transition: 0.3s;
         width: 36px;
         height: 36px;
         
-        transition: 0.3s;
+        transition: background-color 0.5s, transform 0.2s, filter 0.2s;
+
+        background-color: transparent;
+        &.pressed {
+            background-color: var(--link);
+            transition: background-color 0.2s, transform 0.2s, filter 0.2s;
+        }
     }
     
     &:hover {
@@ -16,8 +21,6 @@
             &.light-theme {
                 filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.5)) brightness(0.75);
             }
-            
-            transition: 0.2s;
         }
     }
 }

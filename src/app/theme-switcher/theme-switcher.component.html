@@ -1,7 +1,10 @@
 <div class="theme-switcher d-flex align-items-center">
     <img 
-        [src]="themeSwitcher.isLightTheme ? 'assets/images/theme/dark.svg' : 'assets/images/theme/light.svg'" 
-        [alt]="themeSwitcher.isLightTheme ? 'dark theme': 'light theme'"
-        [class]="themeSwitcher.themeClass"
+        [src]="(hasPressedButton ? delayedIsLightTheme : themeSwitcher.isLightTheme) ? 'assets/images/theme/dark.svg' : 'assets/images/theme/light.svg'" 
+        [alt]="(hasPressedButton ? delayedIsLightTheme : themeSwitcher.isLightTheme) ? 'dark theme': 'light theme'"
+        [class]="hasPressedButton ? (delayedIsLightTheme ? 'light-theme': 'dark-theme') : themeSwitcher.themeClass"
+        (mousedown)="themeSwitcherMouseDown()"
+        (dragstart)="themeSwitcherMouseUp()"
+        [ngClass]="{ 'pressed': isPressingButton || hasPressedButton }"
         (click)="toggleTheme()" />
 </div>
