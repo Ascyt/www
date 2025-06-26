@@ -1,13 +1,10 @@
 <div class="theme-switcher d-flex align-items-center">
-    <label class="mb-1" style="margin-right:0.5rem">Light</label>
-    <div class="form-check form-switch">
-        <input
-            class="form-check-input"
-            type="checkbox"
-            id="themeSwitch"
-            (change)="toggleTheme()"
-            [checked]="!themeSwitcher.isLightTheme"
-        />
-    </div>
-    <label class="mb-1">Dark</label>
+    <img 
+        [src]="(hasPressedButton ? delayedIsLightTheme : themeSwitcher.isLightTheme) ? 'assets/images/theme/dark.svg' : 'assets/images/theme/light.svg'" 
+        [alt]="(hasPressedButton ? delayedIsLightTheme : themeSwitcher.isLightTheme) ? 'dark theme': 'light theme'"
+        [class]="hasPressedButton ? (delayedIsLightTheme ? 'light-theme': 'dark-theme') : themeSwitcher.themeClass"
+        (mousedown)="themeSwitcherMouseDown()"
+        (dragstart)="themeSwitcherMouseUp()"
+        [ngClass]="{ 'pressed': isPressingButton || hasPressedButton }"
+        (click)="toggleTheme()" />
 </div>
