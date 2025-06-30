@@ -23,6 +23,16 @@ export class ThemeSwitcherComponent {
 
   constructor(public themeSwitcher: ThemeSwitcherService) {}
 
+  ngOnInit():void {
+    // Load svgs to cache
+    const svgUrls:string[] = ['assets/images/theme/dark.svg', 'assets/images/theme/light.svg'];
+
+    svgUrls.forEach(url => {
+      const img = new Image();
+      img.src = url;
+    });
+  }
+
   @HostListener('document:mouseup', ['$event'])
   onDocumentMouseUp():void {
     this.themeSwitcherMouseUp();
