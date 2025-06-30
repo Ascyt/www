@@ -8,11 +8,13 @@ import { RedirectingComponent } from './redirecting/redirecting.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SecretComponent } from './secret/secret.component';
 import { BlogComponent } from './blog/blog.component';
+import { BlogFourDComponent } from './blog/blog-four-d/blog-four-d.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
     {path: 'blog', component: BlogComponent},
+    {path: 'blog/4d', component: BlogFourDComponent},
     {path: 'projects', component: ProjectsComponent},
     {path: 'contact', component: ContactComponent},
     {path: 'projects/smsh', component:RedirectingComponent, canActivate: [RedirectGuard], data: {externalUrl: 'https://smsh.ascyt.com/'}},

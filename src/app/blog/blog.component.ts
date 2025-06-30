@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.scss'
 })

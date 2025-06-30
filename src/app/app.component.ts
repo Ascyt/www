@@ -13,13 +13,61 @@ import { ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  isCollapsed:boolean = false;
-  private cycleRoutes:string[] = ['home','blog','projects','contact','about']
+  public isCollapsed:boolean = false;
+  public routes:string[] = ['home','blog','projects','contact','about']
+  public activeRouteList:string[] = [];
+  public get activeRouteListSkipFirst():string[] {
+    return this.activeRouteList.slice(1);
+  }
+  public get highestRoute():string {
+    return this.activeRouteList.length > 0 ? this.activeRouteList[this.activeRouteList.length - 1] : '';
+  }
+  public get firstRoute():string {
+    return this.activeRouteList.length > 0 ? this.activeRouteList[0] : '';
+  }
+  public get formattedActiveRouteList():string[] {
+    if (this.activeRouteList.length === 0) 
+      return [];
 
-  constructor(public router:Router, public themeSwitcher:ThemeSwitcherService) {
-    this.updateTheme();
+    const formattedList = this.activeRouteList.map(route => {
+      return this.formatSingleRoute(route);
+    });
+
+    switch (this.activeRouteList[0]) {
+      case 'blog':
+        if (this.activeRouteList.length >= 2) {
+          switch (this.activeRouteList[1]) {
+            case '4d':
+              formattedList[1] = '4D Simulation';
+              break;
+          }
+        }
+    }
+
+    return formattedList;
   }
 
+  constructor(public router:Router, public themeSwitcher:ThemeSwitcherService, private activatedRoute:ActivatedRoute) {
+    this.updateTheme();
+
+    this.router.events.subscribe(() => {
+      this.onRouteChange();
+    });
+  }
+
+  public formatSingleRoute(route:string):string {
+    return route
+      .split('-')
+      .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+      .join(' ');
+  }
+
+  onRouteChange():void {
+    const urlTree = this.router.parseUrl(this.router.url);
+    this.activeRouteList = urlTree.root.children['primary']
+      ? urlTree.root.children['primary'].segments.map(segment => segment.path)
+      : [];
+  }
 
   @HostListener('window:mousedown', ['$event'])
   handleMouseDown(event:MouseEvent):void {
@@ -41,25 +89,25 @@ export class AppComponent {
       return;
     }
     
-    const routeIndex = this.cycleRoutes.indexOf(this.router.url.split('/')[1]);
+    const routeIndex = this.routes.indexOf(this.router.url.split('/')[1]);
     if (routeIndex === -1) 
     {
       if (event.key === 'ArrowRight') {
         event.preventDefault();
-        this.router.navigate([this.cycleRoutes[0]]);
+        this.router.navigate([this.routes[0]]);
       }
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
-        this.router.navigate([this.cycleRoutes[this.cycleRoutes.length - 1]]);
+        this.router.navigate([this.routes[this.routes.length - 1]]);
       }
     }
     if (event.key === 'ArrowRight') {
       event.preventDefault();
-      this.router.navigate([this.cycleRoutes[routeIndex + 1] || this.cycleRoutes[routeIndex]]);
+      this.router.navigate([this.routes[routeIndex + 1] || this.routes[routeIndex]]);
     }
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
-      this.router.navigate([this.cycleRoutes[routeIndex - 1] || this.cycleRoutes[routeIndex]]);
+      this.router.navigate([this.routes[routeIndex - 1] || this.routes[routeIndex]]);
     }
   }
 
