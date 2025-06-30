@@ -4,7 +4,6 @@ import { Router, RouterOutlet, RouterModule, RouterLinkActive, ActivatedRoute } 
 import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
-import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,7 @@ import { Meta, Title } from '@angular/platform-browser';
 })
 export class AppComponent {
   isCollapsed:boolean = false;
-  private cycleRoutes:string[] = ['home','contact','projects','about']
+  private cycleRoutes:string[] = ['home','blog','projects','contact','about']
 
   constructor(public router:Router, public themeSwitcher:ThemeSwitcherService) {
     this.updateTheme();

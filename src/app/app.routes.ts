@@ -7,12 +7,14 @@ import { RedirectGuard } from './redirect.guard';
 import { RedirectingComponent } from './redirecting/redirecting.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SecretComponent } from './secret/secret.component';
+import { BlogComponent } from './blog/blog.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'home', component: HomeComponent},
-    {path: 'contact', component: ContactComponent},
+    {path: 'blog', component: BlogComponent},
     {path: 'projects', component: ProjectsComponent},
+    {path: 'contact', component: ContactComponent},
     {path: 'projects/smsh', component:RedirectingComponent, canActivate: [RedirectGuard], data: {externalUrl: 'https://smsh.ascyt.com/'}},
     {path: 'projects/ezgpt', component: RedirectingComponent, canActivate: [RedirectGuard], data: {externalUrl: 'https://pypi.org/project/ezgpt/'}},
     {path: 'projects/tt', component: RedirectingComponent, canActivate: [RedirectGuard], data: {externalUrl: 'https://tt.ascyt.com/'}},
