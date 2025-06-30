@@ -126,7 +126,7 @@ export class SpinningTesseractComponent {
   }
 
   private update(currentTime: number): void {
-    for (let i = 0; i < 6; i++) {
+    for (let i = 1; i < 6; i++) { // skip XY (camera tilt)
       this.rotations[i] = Math.sin(this.rotationVelocities[i] * (currentTime / 1000 * 0.005)) * Math.PI;
     }
 
