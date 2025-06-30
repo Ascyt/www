@@ -61,8 +61,14 @@ export class AppComponent {
       .map(part => part.charAt(0).toUpperCase() + part.slice(1))
       .join(' ');
   }
+  public routeUrlsUntilIndex(index:number):string {
+    if (index < 0 || index >= this.activeRouteList.length) {
+      return '';
+    }
+    return this.activeRouteList.slice(0, index + 1).join('/');
+  }
 
-  onRouteChange():void {
+  private onRouteChange():void {
     const urlTree = this.router.parseUrl(this.router.url);
     this.activeRouteList = urlTree.root.children['primary']
       ? urlTree.root.children['primary'].segments.map(segment => segment.path)

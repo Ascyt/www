@@ -24,7 +24,7 @@
         display: none;
     }
 
-    color: var(--front-mid);
+    color: var(--front-low);
     transition: 0.2s;
 
     text-decoration: underline;
@@ -53,6 +53,11 @@
 .nav-item.active {
     margin: 0 20px;
     transition: 0.2s;
+
+    &>.nav-link,.nav-link-sub {
+        color: var(--front);
+        transition: 0.2s;
+    }
 }
 
 .nav-link.active,.nav-link-sub.active {
@@ -61,10 +66,10 @@
     text-decoration-color: var(--front);
 
     text-shadow:
-        -1px -1px 5px var(--back-low),
-        1px -1px 5px var(--back-low),
-        -1px 1px 5px var(--back-low),
-        1px 1px 5px var(--back-low);
+        -1px -1px 10px var(--link-transparent),
+        1px -1px 10px var(--link-transparent),
+        -1px 1px 10px var(--link-transparent),
+        1px 1px 10px var(--link-transparent);
 
     transition: 0.2s;
 }

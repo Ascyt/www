@@ -16,7 +16,7 @@
               @for (subRoute of activeRouteListSkipFirst; track activeRouteList; let ii = $index) {
                 <span class="nav-link-sub-seperator">/</span>
 
-                <a [routerLink]="'/'+route+'/'+subRoute" class="nav-link-sub" [ngClass]="{'active': highestRoute === subRoute}">{{formattedActiveRouteList[ii+1]}}</a>
+                <a [routerLink]="'/'+routeUrlsUntilIndex(ii+1)" class="nav-link-sub" [ngClass]="{'active': highestRoute === subRoute}">{{formattedActiveRouteList[ii+1]}}</a>
               }
             }
           </li>
