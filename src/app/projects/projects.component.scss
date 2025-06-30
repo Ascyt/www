@@ -49,7 +49,19 @@ a {
         background-color: rgba(0,0,0,0.75);
         transition: 0.2s;
     }
+
+
+    .card-url {
+        opacity: 1;
+        transition: 0.2s;
+        color: var(--link-hover);
+
+        &::after {
+            width: 100%; // Extend the underline to full width
+        }
+    }
 }
+
 
 .background-image {
     position: relative;
@@ -96,9 +108,29 @@ a {
     }
 }
 
-.card-subtitle {
+.card-url {
     font-style: italic;
     font-size: 0.75em;
+
+    color: var(--link);
+    opacity: 1;
+    transition: 0.3s;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+
+    width: fit-content;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px; // Adjust the thickness of the underline
+        background-color: var(--link-hover);
+        transition: width 0.3s ease-in-out;
+    }
 }
 
 .row {

@@ -22,7 +22,12 @@ export class HomeComponent {
     return today.getMonth() === this.birthDate.getMonth() && today.getDate() === this.birthDate.getDate();
   }
 
-  getCurrentAge(): number {
+  public get startsWithVowel():boolean {
+    const vowelNumbers:number[] = [8, 11, 18, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89];
+    return vowelNumbers.includes(this.currentAge);
+  }
+
+  public get currentAge(): number {
     const today = new Date();
 
     const yearDiff = today.getFullYear() - this.birthDate.getFullYear();

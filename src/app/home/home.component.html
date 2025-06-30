@@ -1,6 +1,6 @@
 <h2 class="mb-2">Home</h2>
 
-<p class="text-left">Hey there! My name's Filip Schauer and I'm a {{getCurrentAge()}} year old programmer from Austria.</p>
+<p class="text-left">Hey there! My name's Filip Schauer and I'm a{{startsWithVowel ? 'n' : ''}} {{currentAge}} year old programmer from Austria.</p>
 @if (isBirthday) {
     <p class="text-left">It also happens to be my birthday today, so that's cool.</p>
 }
