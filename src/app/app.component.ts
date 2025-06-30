@@ -20,8 +20,27 @@ export class AppComponent {
     this.updateTheme();
   }
 
+
+  @HostListener('window:mousedown', ['$event'])
+  handleMouseDown(event:MouseEvent):void {
+    if (document.body.className === 'what' && event.button === 2) {
+      event.preventDefault();
+      this.router.navigate(['/CLICK-ON-THE-DOT']);
+      this.themeSwitcher.themeSwitchCounter = 0;
+      this.updateTheme();
+      return;
+    }
+  }
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event:KeyboardEvent):void {
+    if (document.body.className === 'what') {
+      event.preventDefault();
+      this.router.navigate(['/CLICK-ON-THE-DOT']);
+      this.themeSwitcher.themeSwitchCounter = 0;
+      this.updateTheme();
+      return;
+    }
+    
     const routeIndex = this.cycleRoutes.indexOf(this.router.url.split('/')[1]);
     if (routeIndex === -1) 
     {
