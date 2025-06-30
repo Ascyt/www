@@ -38,7 +38,7 @@ export class AppComponent {
         if (this.activeRouteList.length >= 2) {
           switch (this.activeRouteList[1]) {
             case '4d':
-              formattedList[1] = '4D Simulation';
+              formattedList[1] = 'Simulating 4D';
               break;
           }
         }
