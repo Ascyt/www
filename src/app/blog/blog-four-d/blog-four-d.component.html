@@ -14,12 +14,67 @@
         In this article, I want to start with 2D to 3D analogies, explain some fundamental 4D ideas and concepts, and slowly work towards explaining how a 4-dimensional creature would perceive and interact with its world, with interactive demos along the way. Aside from knowing some basic concepts such as coordinate systems, there is no prior knowledge required to understanding the ideas I will talk about here.
     </p>
 
-    <h3>What is dimensionality?</h3>
+    <h3>Dimensionality</h3>
 
     <p>
         We live in a primarily <strong>three-dimensional world</strong>. While space might indeed exist in some high-dimensional manifold, for our purposes we will just consider the simple case of reality, where there are just three perpendicular axes to move in. You can move <span class="x" ngbTooltip="x-axis">right and left</span>, <span class="y" ngbTooltip="y-axis">up and down</span> and <span class="z" ngbTooltip="z-axis">forwards and backwards</span>. In other words, any point in space can be specified using three components: <span class="x" ngbTooltip="&quot;right&quot;/&quot;left&quot;">x</span>, <span class="y" ngbTooltip="&quot;up&quot;/&quot;down&quot;">y</span> and <span class="z" ngbTooltip="&quot;forwards&quot;/&quot;backwards&quot;">z</span>. 
     </p>
     <p class="note">
         [vis: coordinate system x/y/z with point and slider]
+    </p>
+
+    <h3>Life in 2D</h3>
+
+    <p>
+        In order to understand 4D, a good way to understand is to consider life in two dimensions and compare it to the 3D world we're used to. The vast majority of concepts in 2D or 3D generalize well to 4D and higher, with only a handful of exceptions (eg. rotations are a little more complex, but more about that later). 
+    </p>
+    <p>
+        In 2D, there are only two perpendicular axes to move in, <span class="x" ngbTooltip="&quot;right&quot;/&quot;left&quot;">x</span> and <span class="y" ngbTooltip="&quot;up&quot;/&quot;down&quot;">y</span>, or in other words <span class="x" ngbTooltip="x-axis">right and left</span> and <span class="y" ngbTooltip="y-axis">up and down</span>. 
+    </p>
+    <p class="note">
+        [vis: coordinate system x/y with point and slider]
+    </p>
+
+    <h3>Vision</h3>
+    <p>
+        Now the big question may arise, what if we just add another coordinate to our 3D visualization to make it 4D? Not so fast. We first have to consider how we could even draw a 4D world to a flat 2D screen. 
+    </p>
+    <p>
+        The 3D visualization from above is not actually in fact 3D - it is merely a 2D projection of a 3D virtual world. Humans are not actually able to see in 3D. If you think that we do, then you are just confusing it with depth perception - being able to judge how far things are away is not the same as being able to truly see in 3D. The light-sensitive cells in our eyes are arranged in a 2D pattern, and two slightly offset 2D images create an illusion of 3D depths in our minds. 
+    </p>
+    <p>
+        To better understand what I mean, let's consider how a 2D creature living in a 2D world might perceive the world.
+    </p>
+    <p class="note">
+        [vis: 2d point with 1d projection]
+    </p>
+    <p>
+        As you can see, this 2D creature is only able to see 1D - just like we 3D creatures are only able to see 2D. From this it's pretty straightforward to conclude that <strong>a 4D creature must therefore be able to see in 3D</strong>. But what does it really mean to be able to see in 3D?
+    </p>
+    
+    <h3>Images</h3>
+    <p>
+        An image, whether it's a photograph of a scene, a painting or a screenshot of a video game, is a 2D grid of pixels (squares), each with a different color. 
+    </p>
+    <p class="note">
+        [vis: slider fills pixels of 2d grid]
+    </p>
+    <p>
+        A 3D image, however, would contain another dimension of pixels. This would make each pixel a 3D cube instead of a 2D square:
+    </p>
+    <p class="note">
+        [vis: slider fills cubes of 3d grid]
+    </p>
+    <p>
+        This is, essentially, what a 4D creature could see. A 4D creature would be able to see an image like this in its entirety - imagine the information of all these pixels and their positions being interpreted in its mind simultaneously. In other words, true 3D vision means being able to see a 3D image with all of its cubic pixels at once, whether they are on the outside or on the inside. 
+    </p>
+    <p>
+        As another example for this, consider a 2D creature living in a 2D world. Since it's only able to see in 1D, no matter how it's positioned, it's not able to see what's inside the box:
+    </p>
+    <p class="note">
+        [vis: 2d creature with render with box with object. box has thickness and pattern within]
+    </p>
+    <p>
+        However, we, as 3D creatures with our 2D vision, can indeed see what's inside the box! We can not only see the object, but also the pattern within the material the box itself is made of. It'd be no different if we moved up a dimension - a 4D creature looking down at our 3D world would be able to see it in its entirety. It would not be able to hide anything from a 4D creature - if you had a vault they would not only be able to see inside the vault, but they would also be able to see the very material that the walls of that vault is made of. 
     </p>
 </div>
