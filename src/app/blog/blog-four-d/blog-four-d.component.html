@@ -17,7 +17,7 @@
     <h3>Dimensionality</h3>
 
     <p>
-        We live in a primarily <strong>three-dimensional world</strong>. While space might indeed exist in some high-dimensional manifold, for our purposes we will just consider the simple case of reality, where there are just three perpendicular axes to move in. You can move <span class="x" ngbTooltip="x-axis">right and left</span>, <span class="y" ngbTooltip="y-axis">up and down</span> and <span class="z" ngbTooltip="z-axis">forwards and backwards</span>. In other words, any point in space can be specified using three components: <span class="x" ngbTooltip="&quot;right&quot;/&quot;left&quot;">x</span>, <span class="y" ngbTooltip="&quot;up&quot;/&quot;down&quot;">y</span> and <span class="z" ngbTooltip="&quot;forwards&quot;/&quot;backwards&quot;">z</span>. 
+        We live in a primarily <strong>three-dimensional world</strong>. While space might indeed exist in some high-dimensional manifold, for our purposes we will just consider the simple case of reality, where there are just three perpendicular axes to move in. You can move <span class="x" ngbTooltip="x-axis">right and left</span>, <span class="y" ngbTooltip="y-axis">up and down</span> and <span class="z" ngbTooltip="z-axis">forwards and backwards</span>. In other words, any point in space can be specified using three components: <span class="x" ngbTooltip="&quot;right&quot;/&quot;left&quot;">x</span>, <span class="y" ngbTooltip="&quot;up&quot;/&quot;down&quot;">y</span> and <span class="z" ngbTooltip="&quot;forwards&quot;/&quot;backwards&quot;">z</span>. While you might recall some systems such as Blender preferring to think of <span class="y">y</span> as being "forwards and backwards" and <span class="z">z</span> as being "up and down", however, we will go with the alternative view used by systems such as Unity, which is to think of  
     </p>
     <p class="note">
         [vis: coordinate system x/y/z with point and slider]
@@ -34,10 +34,13 @@
     <p class="note">
         [vis: coordinate system x/y with point and slider]
     </p>
+    <p>
+        The primary idea we'll be exploring here is what if there were four axes in space instead of the three we're used to. This is simply done by introducing another axis, the <span class="w">w</span> axis, which means any point in space can be specified using three components: <span class="x" ngbTooltip="&quot;right&quot;/&quot;left&quot;">x</span>, <span class="y" ngbTooltip="&quot;up&quot;/&quot;down&quot;">y</span>, <span class="z" ngbTooltip="&quot;forwards&quot;/&quot;backwards&quot;">z</span> and <span class="w" ngbTooltip="&quot;ana&quot;/&quot;kata&quot;">w</span>. This new axis is perpendicular and independent to the other three. This means, in 4D space, there are a total of eight ways to move around: <span class="x" ngbTooltip="x-axis">right and left</span>, <span class="y" ngbTooltip="y-axis">up and down</span>, <span class="z" ngbTooltip="z-axis">forwards and backwards</span> and <span class="w" ngbTooltip="w-axis">ana and kata</span>. "<span class="w">Ana</span>" and "<span class="w">kata</span>" are terms coined by a 19th century mathematician named <a href="https://en.wikipedia.org/wiki/Charles_Howard_Hinton" target="_blank" ngbTooltip="https://en.wikipedia.org/wiki/Charles_Howard_Hinton">Charles Howard Hinton</a> to describe the "forwards" and the "backwards" of the new dimension, so moving towards "<span class="w">ana</span>" means <em>increasing</em> your <span class="w">w</span> coordinate by some amount, while moving towards "<span class="w">kata</span>" means <em>decreasing</em> your <span class="w">w</span> coordinate by some amount, just like how moving "<span class=y>up</span>" <em>increases</em> and moving "<span class="y">down</span>" <em>decreases</em> your <span class="y">y</span> coordinate.
+    </p>
 
     <h3>Vision</h3>
     <p>
-        Now the big question may arise, what if we just add another coordinate to our 3D visualization to make it 4D? Not so fast. We first have to consider how we could even draw a 4D world to a flat 2D screen. 
+        Having four perpendicular axes to move in is cool and all, but what does it mean, really? If 4D is not a thing in our physical world, what would it look like? This is the problem that <strong>projection</strong> aims to solve - to display a 4D scene, we have to find a way to project it onto a screen.
     </p>
     <p>
         The 3D visualization from above is not actually in fact 3D - it is merely a 2D projection of a 3D virtual world. Humans are not actually able to see in 3D. If you think that we do, then you are just confusing it with depth perception - being able to judge how far things are away is not the same as being able to truly see in 3D. The light-sensitive cells in our eyes are arranged in a 2D pattern, and two slightly offset 2D images create an illusion of 3D depths in our minds. 
@@ -54,7 +57,7 @@
     
     <h3>Images</h3>
     <p>
-        An image, whether it's a photograph of a scene, a painting or a screenshot of a video game, is a 2D grid of pixels (squares), each with a different color. 
+        An image, whether it's a photograph of a scene, a painting or a screenshot of a video game, is a 2D grid of pixels, each being a squares, and each having a different color. 
     </p>
     <p class="note">
         [vis: slider fills pixels of 2d grid]
@@ -75,15 +78,32 @@
         [vis: 2d creature with render with box with object. box has thickness and pattern within]
     </p>
     <p>
-        However, we, as 3D creatures with our 2D vision, can indeed see what's inside the box! We can not only see the object, but also the pattern within the material the box itself is made of. It'd be no different if we moved up a dimension - a 4D creature looking down at our 3D world would be able to see it in its entirety. It would not be possible to hide anything from a 4D creature - if you had a vault they would not only be able to see inside the vault, but they would also be able to see the very material that make up the walls of that vault.
+        However, we, as 3D creatures with our 2D vision, can indeed see what's inside the box! We can not only see the object, but also the pattern within the material the box itself is made of. It'd be no different if we moved up a dimension - a 4D creature looking down at our 3D world would be able to see it in its entirety. It would not be possible to hide anything from a 4D creature - if you had a vault they would not only be able to see the object that is inside the vault, but they would also be able to see the very material that make up the walls of that vault.
     </p>
 
     <h3>Tesseract</h3>
     <p>
-        Enough talking about <em>how</em> a 4D creature could see, let's talk about <em>what</em> a 4D creature might see. Arguably the simplest 4D object is the <strong>Tesseract</strong>, the 4D analogue of a 3D cube or 2D square. 
+        Enough talking about <em>how</em> a 4D creature could see, let's talk about <em>what</em> a 4D creature might see. Arguably the simplest 4D object is the <strong>Tesseract</strong>, the 4D analogue of a 3D cube, 2D square or 1D line. 
     </p>
     <p>
-        Let's first take a look at a 2D cube with all its points: 
+        Let's start with a <strong>1D</strong> coordinate system, consisting of only the <span class="x">x</span>-axis, with two points being connected with a line
     </p>
-    
+    <p class="note">
+        [vis: 1d line, two points, connected with line]
+    </p>
+    <p>
+        Now, let's add another dimension to turn it into a <strong>2D</strong> coordinate system consisting of the <span class="x">x</span> and <span class="y">y</span> axes. We will duplicate this line, move it into the new dimension and connect all the points:
+    </p>
+    <p class="note">
+        [vis: 2d system, with line from before, slider to duplicate and move upwards]
+    </p>
+    <p>
+        This gave us a 2D square! Let's continue. We'll now turn it into a <strong>3D</strong> coordinate system consisting of <span class="x">x</span>, <span class="y">y</span> and <span class="z">z</span> axes, and we will duplicate our square, move it into the new dimension and connect all the points:
+    </p>
+    <p class="note">
+        [vis: 3d system, with square from before, slider to duplicate and move backwards]
+    </p>
+    <p>
+        Now, we just made a 3D cube! So far, so good - but what now? Sure, we can try to do the same thing to get to our final piece of the puzzle, the <strong>4D tesseract</strong>, by duplicating this cube, moving it into the new dimension and connecting all the vertices - but where <em>is</em> that new dimension, really? It might feel like we're already out of space for the new dimension, I mean, where could we put a fourth, perpendicular axis?
+    </p>
 </div>
