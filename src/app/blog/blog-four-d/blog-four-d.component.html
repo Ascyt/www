@@ -17,10 +17,13 @@
     <h3>Dimensionality</h3>
 
     <p>
-        We live in a primarily <strong>three-dimensional world</strong>. While space might indeed exist in some high-dimensional manifold, for our purposes we will just consider the simple case of reality, where there are just three perpendicular axes to move in. You can move <span class="x" ngbTooltip="x-axis">right and left</span>, <span class="y" ngbTooltip="y-axis">up and down</span> and <span class="z" ngbTooltip="z-axis">forwards and backwards</span>. In other words, any point in space can be specified using three components: <span class="x" ngbTooltip="&quot;right&quot;/&quot;left&quot;">x</span>, <span class="y" ngbTooltip="&quot;up&quot;/&quot;down&quot;">y</span> and <span class="z" ngbTooltip="&quot;forwards&quot;/&quot;backwards&quot;">z</span>. While you might recall some systems such as Blender preferring to think of <span class="y">y</span> as being "forwards and backwards" and <span class="z">z</span> as being "up and down", however, we will go with the alternative view used by systems such as Unity, which is to think of  
+        We live in a primarily <strong>three-dimensional world</strong>. While space might indeed exist in some high-dimensional manifold, for our purposes we will just consider the simple case of reality, where there are just three perpendicular axes to move in. You can move <span class="x hoverable" ngbTooltip="x-axis">right and left</span>, <span class="y hoverable" ngbTooltip="y-axis">up and down</span> and <span class="z hoverable" ngbTooltip="z-axis">forwards and backwards</span>. In other words, any point in space can be specified using three components: <span class="x hoverable" ngbTooltip="&quot;right&quot;/&quot;left&quot;">x</span>, <span class="y hoverable" ngbTooltip="&quot;up&quot;/&quot;down&quot;">y</span> and <span class="z hoverable" ngbTooltip="&quot;forwards&quot;/&quot;backwards&quot;">z</span>. 
     </p>
     <p class="note">
         [vis: coordinate system x/y/z with point and slider]
+    </p>
+    <p>
+        While you might recall some systems such as Blender preferring to think of <span class="y">y</span> as being "forwards and backwards" and <span class="z">z</span> as being "up and down, in this article we'll go with the alternative view used by systems such as Unity, which is to think of <span class="y">y</span> as being "up and down" and <span class="z">z</span> as being "forwards and backwards".
     </p>
 
     <h3>Life in 2D</h3>
@@ -35,7 +38,7 @@
         [vis: coordinate system x/y with point and slider]
     </p>
     <p>
-        The primary idea we'll be exploring here is what if there were four axes in space instead of the three we're used to. This is simply done by introducing another axis, the <span class="w">w</span> axis, which means any point in space can be specified using three components: <span class="x" ngbTooltip="&quot;right&quot;/&quot;left&quot;">x</span>, <span class="y" ngbTooltip="&quot;up&quot;/&quot;down&quot;">y</span>, <span class="z" ngbTooltip="&quot;forwards&quot;/&quot;backwards&quot;">z</span> and <span class="w" ngbTooltip="&quot;ana&quot;/&quot;kata&quot;">w</span>. This new axis is perpendicular and independent to the other three. This means, in 4D space, there are a total of eight ways to move around: <span class="x" ngbTooltip="x-axis">right and left</span>, <span class="y" ngbTooltip="y-axis">up and down</span>, <span class="z" ngbTooltip="z-axis">forwards and backwards</span> and <span class="w" ngbTooltip="w-axis">ana and kata</span>. "<span class="w">Ana</span>" and "<span class="w">kata</span>" are terms coined by a 19th century mathematician named <a href="https://en.wikipedia.org/wiki/Charles_Howard_Hinton" target="_blank" ngbTooltip="https://en.wikipedia.org/wiki/Charles_Howard_Hinton">Charles Howard Hinton</a> to describe the "forwards" and the "backwards" of the new dimension, so moving towards "<span class="w">ana</span>" means <em>increasing</em> your <span class="w">w</span> coordinate by some amount, while moving towards "<span class="w">kata</span>" means <em>decreasing</em> your <span class="w">w</span> coordinate by some amount, just like how moving "<span class=y>up</span>" <em>increases</em> and moving "<span class="y">down</span>" <em>decreases</em> your <span class="y">y</span> coordinate.
+        The primary idea we'll be exploring here is what if there were four axes in space instead of the three we're used to. This is simply done by introducing another axis, the <span class="w">w</span> axis, which means any point in space can be specified using four components: <span class="x" ngbTooltip="&quot;right&quot;/&quot;left&quot;">x</span>, <span class="y" ngbTooltip="&quot;up&quot;/&quot;down&quot;">y</span>, <span class="z" ngbTooltip="&quot;forwards&quot;/&quot;backwards&quot;">z</span> and <span class="w hoverable" ngbTooltip="&quot;ana&quot;/&quot;kata&quot;">w</span>. This new <span class="w">w</span> axis is perpendicular and independent to the other three. This means, in 4D space, there are a total of eight ways to move around: <span class="x" ngbTooltip="x-axis">right and left</span>, <span class="y" ngbTooltip="y-axis">up and down</span>, <span class="z" ngbTooltip="z-axis">forwards and backwards</span> and <span class="w hoverable" ngbTooltip="w-axis">ana and kata</span>. "<span class="w">Ana</span>" and "<span class="w">kata</span>" are terms coined by a 19th century mathematician named <a href="https://en.wikipedia.org/wiki/Charles_Howard_Hinton" target="_blank" ngbTooltip="https://en.wikipedia.org/wiki/Charles_Howard_Hinton">Charles Howard Hinton</a> to describe the "forwards" and the "backwards" of the new dimension, so moving towards "<span class="w">ana</span>" means <em>increasing</em> your <span class="w">w</span> coordinate by some amount, while moving towards "<span class="w">kata</span>" means <em>decreasing</em> your <span class="w">w</span> coordinate by some amount, just like how moving "<span class=y>up</span>" <em>increases</em> and moving "<span class="y">down</span>" <em>decreases</em> your <span class="y">y</span> coordinate.
     </p>
 
     <h3>Vision</h3>
@@ -43,27 +46,27 @@
         Having four perpendicular axes to move in is cool and all, but what does it mean, really? If 4D is not a thing in our physical world, what would it look like? This is the problem that <strong>projection</strong> aims to solve - to display a 4D scene, we have to find a way to project it onto a screen.
     </p>
     <p>
-        The 3D visualization from above is not actually in fact 3D - it is merely a 2D projection of a 3D virtual world. Humans are not actually able to see in 3D. If you think that we do, then you are just confusing it with depth perception - being able to judge how far things are away is not the same as being able to truly see in 3D. The light-sensitive cells in our eyes are arranged in a 2D pattern, and two slightly offset 2D images create an illusion of 3D depth in our minds. 
+        The 3D visualization from <span class="a">above</span> is not actually in fact 3D - it is merely a 2D projection of a 3D virtual world. Humans are not actually able to see in 3D. If you think that we do, then you are just confusing it with depth perception - being able to judge how far things are away is not the same as being able to truly see in 3D. The light-sensitive cells in our eyes are arranged in a 2D pattern, and two slightly offset 2D images create an illusion of 3D depth in our minds. 
     </p>
     <p>
-        To better understand what I mean, let's consider how a 2D creature living in a 2D world might perceive the world.
+        To better understand what I mean, let's consider how a 2D creature living in a 2D world might perceive the world:
     </p>
     <p class="note">
-        [vis: 2d point with 1d projection]
+        [vis: 2d point with 1d projection. todo more explaining above]
     </p>
     <p>
-        As you can see, this 2D creature is only able to see 1D - just like we 3D creatures are only able to see 2D. From this it's pretty straightforward to conclude that <strong>a 4D creature must therefore be able to see in 3D</strong>. But what does it really mean to be able to see in 3D?
+        As you can see, this 2D creature is only able to see 1D - just like we 3D creatures are only able to see 2D. From this, it's pretty straightforward to conclude that <strong>a 4D creature must therefore be able to see in 3D</strong>. But what does it really mean to be able to see in 3D?
     </p>
     
     <h3>Images</h3>
     <p>
-        An image, whether it's a photograph of a scene, a painting or a screenshot of a video game, is a 2D grid of pixels, each being a squares, and each having a different color. 
+        An image, whether it's a photograph of a scene, a painting or a screenshot of a video game, is a 2D grid of pixels, each being a squares, and each having a different color:
     </p>
     <p class="note">
         [vis: slider fills pixels of 2d grid]
     </p>
     <p>
-        A 3D image, however, would contain another dimension of pixels. This would make each pixel a 3D cube instead of a 2D square:
+        A 3D image, however, would contain another dimension of pixels. This would make each pixel a <strong>3D cube</strong> instead of a 2D square:
     </p>
     <p class="note">
         [vis: slider fills cubes of 3d grid]
@@ -72,7 +75,7 @@
         This is, essentially, what a 4D creature could see. A 4D creature would be able to see an image like this in its entirety - imagine the information of all these pixels and their positions being interpreted in its mind simultaneously. In other words, true 3D vision means being able to see a 3D image with all of its cubic pixels at once, whether they are on the outside or on the inside. 
     </p>
     <p>
-        As another example for this, consider a 2D creature living in a 2D world. Since it's only able to see in 1D, no matter how it's positioned, it's not able to see what's inside the box:
+        As another example for this, consider a 2D creature living in a 2D world. Since it's only able to see in 1D, it's not able to see what's inside the box, no matter how it's positioned:
     </p>
     <p class="note">
         [vis: 2d creature with render with box with object. box has thickness and pattern within]
@@ -83,7 +86,7 @@
 
     <h3>Hypercubes</h3>
     <p>
-        Enough talking about <em>how</em> a 4D creature could see, let's talk about <em>what</em> a 4D creature might see. Arguably the simplest 4D object is the <strong>Tesseract</strong>, the 4D analogue of a 3D cube, 2D square or 1D line. An n-dimensional cube is also called a <strong>hypercube</strong>, which includes all the mentioned objects, that means that not only tesseracts, but also squares and cubes fall under this definition.
+        Enough talking about <em>how</em> a 4D creature could see, let's talk about <em>what</em> a 4D creature might see. Arguably the simplest 4D object is the <strong>Tesseract</strong>, the 4D analogue of a 3D cube, 2D square or 1D line. An n-dimensional cube is also called a <strong>hypercube</strong>, which includes all the mentioned objects, which means that not only tesseracts, but also squares and cubes fall under this definition.
     </p>
     <p>
         Let's start with a <strong>1D</strong> coordinate system, consisting of only the <span class="x">x</span>-axis, with two points being connected with a line:
@@ -118,7 +121,7 @@
         [vis: projection of a cube, looks like square in a square]
     </p>
     <p>
-        While this is essentially just a 2D image, we humans understand that it's a projection of 3D cube wireframe. However, to a 2D creature that would have no idea about 3D all they would see is a <strong>square in a square, with all corners connected</strong>. As 3D beings, however, we understand that this is not what we are actually looking at - the front square is simply connected to the back square, and both squares are actually the same size - the "smaller" looking one is just <strong>further away from the viewer</strong> than the "larger" looking one.
+        While this is essentially just a 2D image, we humans understand that it's a projection of 3D cube wireframe. However, to a 2D creature that would have no idea about 3D all they would see is a <strong>square in a square, with all corners connected</strong>. As 3D beings, however, we understand that this is not what we are actually looking at - the <span class="hoverable">front</span> square is simply connected to the <span class="hoverable">back</span> square, and both squares are actually the same size - the "<span class="hoverable">smaller</span>" looking one is just <strong>further away from the viewer</strong> than the "<span class="hoverable">larger</span>" looking one.
     </p>
     <p>
         We can do the same for 4D. To create and display a simple <strong>3D projection</strong> of a 4D tesseract, we can create a cube, duplicate it, make it "smaller" (further away from the viewer in 4D) and connect the vertices:
@@ -127,11 +130,61 @@
         [vis: cube, slider to copy and make smaller and connect vertices]
     </p>
     <p>
-        We have just made the classic tesseract model! Remember that, while it may look like a cube is inside of another cube, the "smaller" cube is really just further away from the view than the "larger" cube, and that they are both the same size in 4D space.
+        We have just made the classic tesseract model! Remember that, while it may look like a cube is inside of another cube, the "<span class="hoverable">smaller</span>" cube is really just further away from the viewer than the "<span class="hoverable">larger</span>" cube, and that they are both the same size in 4D space. Don't worry if this might seem difficult to grasp at first, as we'll now go over how and why this is the case.
     </p>
 
-    <h3>Hyperplanes</h3>
+    <h3>Movement</h3>
     <p>
-        We will take an in-depth look at projection later on in this article, however, for now let's take a quick detour to talk about another fundamental n-dimensional topic which also serves as a great way to build an intuition to 4D: The concept of <strong>Hyperplanes</strong> and flat dimensions. 
+        Let's take a closer look at <strong>4D to 3D projection</strong> by looking at how <strong>3D to 2D projection</strong> is built. Take the following 2D projection of a wireframe of a 3D cube looked at from the front. Using the <strong>provided keys</strong> (or your keyboard), you can move the camera around:
     </p>
+    <p class="note">
+        [vis: cube, WASDQE and key buttons to move (key buttons show +X, -Z etc. and the keyboard keys). incl. reset button]
+    </p>
+    <p>
+        Notice what's happening. If you move around, the <strong>projected cube moves in the opposite direction</strong>. That means that, say, if you move <span class="a">to the right</span>, visually, the two connected squares (i.e. the projected cube) move <strong>to the left</strong>. And notice another thing: The "<span class="hoverable">smaller</span>" square seems to lag slightly behind than the "<span class="hoverable">larger</span>" square. As 3D beings, this is intuitive to us - relative to the cube, we're moving to the right, so the cube moves to the left; and since the front side is nearer to us, it visually also moves away by a larger amount than the side which is further away.
+    </p>
+    <p>
+        While moving left, right, up or down visually moves the cube in the opposite direction, notice that moving <strong>forwards and backwards</strong> does not produce similar results. Instead, moving <span class="a">forwards</span>&nbsp;<em>increases</em> the size of the projected cube, while moving <span class="a">backwards</span>&nbsp;<em>decreases</em> it. Unless it's <span class="a">lined up</span> with the <span class="hoverable">crosshair</span>, moving towards it also moves it further towards the edge of the viewport, while moving away from it brings it closer towards the crosshair. This makes sense to us, as in perspective projection, further away objects like cars, buildings or mountains in the distance might look smaller to us than an apple a couple of centimeters away from our eyes, despite both being vastly different sizes in reality.
+    </p>
+    <p>
+        This generalizes well to 4D. Now, instead of a 2D representation of a 3D cube, we have a 3D representation of a 4D tesseract, which is essentially made of two cubes connected at each vertex (corner). You can once again move around with the arrow keys:
+    </p>
+    <p class="note">
+        [vis: tesseract, WASDQE and key buttons to move like above]
+    </p>
+    <p>
+        Notice that, just like previously, the projected tesseract moves in the <strong>opposite direction</strong> than the camera moves in. Moving <span class="a">to the left</span> moves both connected cubes to the right, and moving <span class="a">upwards</span> moves both connected cubes downwards. In the same way as previously, the "<span class="hoverable">smaller</span>" looking cube seems to "lag behind" the "<span class="hoverable">larger</span>" looking cube when you move around. As before, it's because one 3D cubic face of the tesseract acts as the <span class="hoverable">front</span> of the cube and another as the <span class="hoverable">back</span>, and further away objects look smaller in the viewport than closer objects. 
+    </p>
+    <p>
+        However, you might notice that one thing's different: When you move <span class="a">forwards</span>, the projected object doesn't increase in size anymore. Instead, since <strong>the <span class="z">z</span>-axis is now part of the viewport</strong>, it moves backwards! Previously, in our 3D to 2D example, we had a viewport that consisted of <span class="x">x</span> and <span class="y">y</span> and we were "looking" into the <span class="z">z</span>-axis; now, we have a viewport that consists of <span class="x">x</span>, <span class="y">y</span> and <span class="z">z</span> and we are "looking" into the new <span class="w">w</span>-axis. That means that we can add another input to our simulation, which lets us move <span class="w">ana</span>/<span class="w">kata</span> (which we <span class="a">previously</span> defined to be the "forwards"/"backwards" of the fourth dimension): 
+    </p>
+    <p class="note">
+        [vis: same as before but W+-, with keys Space and Shift]
+    </p>
+    <p>
+        As you can see, we can now move towards and away from the cube with our new <span class="w">w</span>-axis keys! Just like in the 3D to 2D example with the <span class="z">z</span>-axis, if we move in this new direction, both of our connected cubes become larger if we move <span class="a">ana</span> and smaller if we move <span class="a">kata</span>. Note that they're still the same size in 4D space, and that it's just our projection that looks different because we are now closer/farther to the tesseract. If our projected object is <span class="a">not lined up</span> with our <span class="hoverable">3D crosshair</span>, moving <span class="w">ana</span> moves it further towards the edge of the viewport, while moving <span class="w">kata</span> moves it closer to said crosshair, just like in the 3D to 2D example but with an additional dimension.
+    </p>
+    <p>
+        However, I must emphasize one thing: The choice of the <span class="w">w</span>-axis being the "forwards" direction in this case is completely <strong>arbitrary</strong> - in 4D, all four axes are equal; there is nothing that makes the <span class="w">w</span>-axis "different" from the other three. That being said, it's convenient to think of the 3D viewport consisting of <span class="x">x</span>, <span class="y">y</span> and <span class="z">z</span> and every 3D cubic pixel essentially "looking" into the remaining dimension. Also, in case you're wondering why you don't see cubic pixels, it's because this is not how I'm internally rendering this - if you want to find out how, you can take a look at the source code of <span class="a">this</span> and of my <span class="a">4D sim project</span>. I might even make another blog post talking about the implementation, as it's super interesting to learn about as well :)
+    </p>
+
+    <h3>Rotation</h3>
+    <p class="note">[rotational planes, camera tilt, mouse movement, 3D mouse using keys]</p>
+
+    <h3>Axes</h3>
+    <p class="note">[incl. extruding cubes]</p>
+
+    <h3>Simulation</h3>
+    <p class="note">[link to and explain existing simulation]</p>
+
+    <h3>Fun Facts</h3>
+    <p class="note">[regular polyhedra, double rotations, higher dimensions]</p>
+
+    <h3>Conclusion</h3>
+    <p class="note">[what makes this interesting, further reading]</p>
 </div>
+
+<p class="notice">
+    Consider the main written content of this article to be licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" ngbTooltip="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC BY-SA 4.0</a> (i.e. include this license and a link to this article if you want to redistribute it). <br />
+    The interactive visualizations/simulations are an exception to this - they are licensed under <a href="/license" target="_blank" ngbTooltip="https://github.com/Ascyt/www/blob/main/LICENSE">GPL-3.0</a> like the rest of my website.
+</p>

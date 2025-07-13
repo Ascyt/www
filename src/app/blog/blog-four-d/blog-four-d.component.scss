@@ -16,3 +16,7 @@
     margin-left: 20px;
     color: var(--front-mid)
 }
+
+.hoverable {
+    text-decoration: underline dotted 1px var(--front-mid) !important;
+}

@@ -85,9 +85,10 @@ body {
     color: var(--front);
 }
 
-a {
+a,.a {
     color: var(--link);
     text-decoration: none;
+    cursor: pointer;
     position: relative; 
     transition: color 0.3s;
 
@@ -245,4 +246,27 @@ a {
 
 .accordion-body {
     color: var(--front-mid);
+}
+
+
+.notice {
+    color: var(--back-low);
+    font-size: small;
+}
+
+.notice>a {
+    color: var(--back-low);
+    text-decoration: underline;
+    text-decoration-color: var(--back-low);
+    transition: 0.2s;
+
+    &::after {
+        display: none; // Remove the underline effect
+    }
+}
+
+.notice>a:hover {
+    color: var(--link);
+    text-decoration-color: var(--link);
+    transition: 0.2s;
 }
