@@ -1,6 +1,6 @@
 My video (URL: https://youtu.be/Oe7MjfQokpE) is licensed under the Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0) license. In general, you are free to share and adapt the parts of the video that are not the exceptions listed below, provided you also share your work under CC BY-SA 4.0. 
 
-If you want to do so, check out the full license: https://creativecommons.org/licenses/by-sa/4.0/deed.en
+You can find the full license here: https://creativecommons.org/licenses/by-sa/4.0/deed.en
 
 When it comes to attribution, I consider providing a URL to this video (if no URL is feasable, specify the video title instead), in addition to my username, "Ascyt", my website, https://ascyt.com/, or my real name, "Filip Schauer", to be enough.
 
@@ -45,3 +45,5 @@ The following thirty-nine elements are exceptions to this license. They are NOT 
 37. By Jason Hise via Wikipedia. Link: https://en.wikipedia.org/wiki/Tesseract#/media/File:8-cell.gif (retrieved 2025-08-29). Public Domain. 
 38. Contains work by Drummyfish and Jason Hise via Wikipedia/Wikimedia Commons under the Public Domain or CC0. 
 39. Designed by Freepik from Flaticon. Link: https://www.flaticon.com/free-icon/raise-hand_3189429 (retrieved 2025-08-27). Copyright: Flaticon Free License (with attribution): https://media.flaticon.com/license/license.pdf.
+
+Additionally, short clips of the game "Minecraft: Java Edition", which is published by Mojang AB, have been used under Fair Use for educational purposes.
