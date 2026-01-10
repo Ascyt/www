@@ -18,7 +18,7 @@
           <a [routerLink]="'/'+projectsRoute" class="nav-link">{{ language === 'de' ? 'Projekte' : 'Projects' }}</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a [routerLink]="'/'+aboutRoute" class="nav-link">{{ language === 'de' ? 'Über mich' : 'About' }}</a>
+          <a [routerLink]="'/'+aboutRoute" class="nav-link">{{ language === 'de' ? 'Über Mich' : 'About' }}</a>
         </li>
 
         <li *ngIf="router.url === '/NotFound'" class="nav-item" routerLinkActive="active">
