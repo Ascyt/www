@@ -1,5 +1,5 @@
 export class LanguageValues {
-  private static readonly overrideLanguage:string | null = 'de'; // 'de' or 'en' to override auto-detection
+  private static readonly overrideLanguage:string | null = null; // 'de' or 'en' to override auto-detection
 
   public static readonly language:string = LanguageValues.overrideLanguage ?? 
     (window.location.hostname.startsWith('de') ? 'de' : 'en');
@@ -11,7 +11,8 @@ export class LanguageValues {
     'home': { 'en': 'home', 'de': 'startseite' },
     'donate': { 'en': 'donate', 'de': 'spenden' },
     'license': { 'en': 'license', 'de': 'lizenz' },
-    'source': { 'en': 'source', 'de': 'quellcode' }
+    'source': { 'en': 'source', 'de': 'quellcode' },
+    'NotFound': { 'en': 'NotFound', 'de': 'NichtGefunden' }
   };
 
   public static getTranslatedRoute(pathname:string, targetLanguage:string):string {

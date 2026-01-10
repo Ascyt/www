@@ -22,6 +22,7 @@ export class AppComponent {
   public readonly contactRoute:string = LanguageValues.routes['contact'][LanguageValues.language];
   public readonly projectsRoute:string = LanguageValues.routes['projects'][LanguageValues.language]
   public readonly aboutRoute:string = LanguageValues.routes['about'][LanguageValues.language];
+  public readonly notFoundRoute:string = LanguageValues.routes['NotFound'][LanguageValues.language];
 
   private cycleRoutes:string[] = [this.homeRoute, this.contactRoute, this.projectsRoute, this.aboutRoute];
 

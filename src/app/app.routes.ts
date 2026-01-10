@@ -16,6 +16,7 @@ const about:string = LanguageValues.routes['about'][LanguageValues.language];
 const donate:string = LanguageValues.routes['donate'][LanguageValues.language];
 const license:string = LanguageValues.routes['license'][LanguageValues.language];
 const source:string = LanguageValues.routes['source'][LanguageValues.language];
+const notFound:string = LanguageValues.routes['NotFound'][LanguageValues.language];
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -29,7 +30,7 @@ export const routes: Routes = [
     {path: `${projects}/wisdomkeys`, component: RedirectingComponent, canActivate: [RedirectGuard], data: {externalUrl: 'https://wisdomkeys.ascyt.com/'}},
     {path: `${projects}/4d-projection-playground`, component: RedirectingComponent, canActivate: [RedirectGuard], data: {externalUrl: 'https://ascyt.itch.io/4d-projection-playground'}},
     {path: about, component: AboutComponent},
-    {path: 'NotFound', component: SecretComponent},
+    {path: notFound, component: SecretComponent},
 
     {path: donate, component: RedirectingComponent, canActivate: [RedirectGuard], data: {externalUrl: 'https://ko-fi.com/ascyt'}},
     {path: 'github', component: RedirectingComponent, canActivate: [RedirectGuard], data: {externalUrl: 'https://github.com/Ascyt'}},

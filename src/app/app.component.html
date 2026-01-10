@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md">
   <div class="container-fluid">
-    <a class="navbar-brand logo" href="/home">
+    <a class="navbar-brand logo" [href]="'/'+homeRoute">
       <img class="d-inline-block align-text-top" src="assets/images/logo.png" alt="Logo" />
     </a>
     <button class="navbar-toggler" [ngClass]="themeSwitcher.isLightTheme ? 'dark' : 'light'" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarNav">
@@ -21,8 +21,8 @@
           <a [routerLink]="'/'+aboutRoute" class="nav-link">{{ language === 'de' ? 'Über Mich' : 'About' }}</a>
         </li>
 
-        <li *ngIf="router.url === '/NotFound'" class="nav-item" routerLinkActive="active">
-          <a routerLink="/NotFound" class="nav-link" style="color:orange;">Not Found</a>
+        <li *ngIf="router.url === '/'+notFoundRoute" class="nav-item" routerLinkActive="active">
+          <a [routerLink]="'/'+notFoundRoute" class="nav-link" style="color:orange;">{{ language === 'de' ? 'Nicht Gefunden' : 'Not Found' }}</a>
         </li>
       </ul>
     </div>
