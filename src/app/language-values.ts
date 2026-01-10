@@ -1,5 +1,5 @@
 export class LanguageValues {
-  private static readonly overrideLanguage:string | null = 'en'; // 'de' or 'en' to override auto-detection
+  private static readonly overrideLanguage:string | null = 'de'; // 'de' or 'en' to override auto-detection
 
   public static readonly language:string = LanguageValues.overrideLanguage ?? 
     (window.location.hostname.startsWith('de') ? 'de' : 'en');

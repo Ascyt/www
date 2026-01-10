@@ -9,16 +9,16 @@
     <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item" routerLinkActive="active">
-          <a [routerLink]="'/'+homeRoute" class="nav-link">Home</a>
+          <a [routerLink]="'/'+homeRoute" class="nav-link">{{ language === 'de' ? 'Startseite' : 'Home' }}</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a [routerLink]="'/'+contactRoute" class="nav-link">Contact</a>
+          <a [routerLink]="'/'+contactRoute" class="nav-link">{{ language === 'de' ? 'Kontakt' : 'Contact' }}</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a [routerLink]="'/'+projectsRoute" class="nav-link">Projects</a>
+          <a [routerLink]="'/'+projectsRoute" class="nav-link">{{ language === 'de' ? 'Projekte' : 'Projects' }}</a>
         </li>
         <li class="nav-item" routerLinkActive="active">
-          <a [routerLink]="'/'+aboutRoute" class="nav-link">About</a>
+          <a [routerLink]="'/'+aboutRoute" class="nav-link">{{ language === 'de' ? 'Über mich' : 'About' }}</a>
         </li>
 
         <li *ngIf="router.url === '/NotFound'" class="nav-item" routerLinkActive="active">
@@ -34,5 +34,10 @@
 </nav>
 <div class="container">
   <router-outlet />
-  <p class="text-left notice">Licensed under <a href="/license" target="_blank" ngbTooltip="https://github.com/Ascyt/www/blob/main/LICENSE">GPL-3.0</a> • <a href="/source" ngbTooltip="https://github.com/Ascyt/www" target="_blank">Source Code</a> • <a href="/donate" ngbTooltip="https://ko-fi.com/Ascyt" target="_blank">♡ Donate ♡</a></p>
+  @if (language === 'de') {
+    <p class="text-left notice">Lizensiert unter <a href="/lizenz" target="_blank" ngbTooltip="https://github.com/Ascyt/www/blob/main/LICENSE">GPL-3.0 (Englisch)</a> • <a href="/quellcode" ngbTooltip="https://github.com/Ascyt/www" target="_blank">Quellcode</a> • <a href="/spenden" ngbTooltip="https://ko-fi.com/Ascyt" target="_blank">♡ Spenden ♡</a></p>
+  }
+  @else {
+    <p class="text-left notice">Licensed under <a href="/license" target="_blank" ngbTooltip="https://github.com/Ascyt/www/blob/main/LICENSE">GPL-3.0</a> • <a href="/source" ngbTooltip="https://github.com/Ascyt/www" target="_blank">Source Code</a> • <a href="/donate" ngbTooltip="https://ko-fi.com/Ascyt" target="_blank">♡ Donate ♡</a></p>
+  }
 </div>

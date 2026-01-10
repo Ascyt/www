@@ -17,6 +17,7 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
 })
 export class AppComponent {
   isCollapsed:boolean = false;
+  public language:string = LanguageValues.language;
   public readonly homeRoute:string = LanguageValues.routes['home'][LanguageValues.language];
   public readonly contactRoute:string = LanguageValues.routes['contact'][LanguageValues.language];
   public readonly projectsRoute:string = LanguageValues.routes['projects'][LanguageValues.language]
