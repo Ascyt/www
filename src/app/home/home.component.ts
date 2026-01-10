@@ -3,6 +3,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SpinningTesseractComponent } from '../spinning-tesseract/spinning-tesseract.component';
+import { LanguageValues } from '../language-values';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ import { SpinningTesseractComponent } from '../spinning-tesseract/spinning-tesse
 export class HomeComponent {
   constructor(private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, private router:Router) { }
 
+  public readonly language:string = LanguageValues.language;
   private readonly birthDate = new Date('2007-04-25');
 
   public get isBirthday(): boolean {
