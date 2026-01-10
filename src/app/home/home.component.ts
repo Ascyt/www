@@ -41,10 +41,10 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(url => {
-        this.titleService.setTitle('Ascyt • Home');
-        this.metaService.updateTag({ property: 'og:title', content: 'Ascyt • Home' });
-        this.metaService.updateTag({ property: 'og:url', content: 'https://ascyt.com' + this.router.url });
-        this.metaService.updateTag({ property: 'og:description', content: 'The home page of the personal website of Ascyt (Filip Schauer).' });
+        this.titleService.setTitle((this.language === 'de' ? 'Ascyt • Startseite' : 'Ascyt • Home'));
+        this.metaService.updateTag({ property: 'og:title', content: (this.language === 'de' ? 'Ascyt • Startseite' : 'Ascyt • Home') });
+        this.metaService.updateTag({ property: 'og:url', content: (this.language === 'de' ? 'https://de.ascyt.com' : 'https://ascyt.com') + this.router.url });
+        this.metaService.updateTag({ property: 'og:description', content:  (this.language === 'de' ? 'Die Startseite der persönlichen Webseite von Ascyt (Filip Schauer).' : 'The home page of the personal website of Ascyt (Filip Schauer).') });
     });
   }
 }
