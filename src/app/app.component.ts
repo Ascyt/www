@@ -5,17 +5,24 @@ import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.componen
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
 import { Meta, Title } from '@angular/platform-browser';
+import { LanguageValues } from './language-values';
+import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ThemeSwitcherComponent, RouterModule, RouterLinkActive, NgbModule],
+  imports: [CommonModule, RouterOutlet, ThemeSwitcherComponent, RouterModule, RouterLinkActive, NgbModule, LanguageSwitcherComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   isCollapsed:boolean = false;
-  private cycleRoutes:string[] = ['home','contact','projects','about']
+  public readonly homeRoute:string = LanguageValues.routes['home'][LanguageValues.language];
+  public readonly contactRoute:string = LanguageValues.routes['contact'][LanguageValues.language];
+  public readonly projectsRoute:string = LanguageValues.routes['projects'][LanguageValues.language]
+  public readonly aboutRoute:string = LanguageValues.routes['about'][LanguageValues.language];
+
+  private cycleRoutes:string[] = [this.homeRoute, this.contactRoute, this.projectsRoute, this.aboutRoute];
 
   constructor(public router:Router, public themeSwitcher:ThemeSwitcherService) {
     this.updateTheme();
