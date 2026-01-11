@@ -1,0 +1,8 @@
+<div class="language-switcher d-flex align-items-center">
+    <a [href]="'https://' + (language === 'de' ? 'ascyt.com' : 'de.ascyt.com') + pathnameAfterClick" 
+    [ngbTooltip]="language === 'de' ? 'Switch to English' : 'Auf Deutsch wechseln'">
+    <img 
+        [src]="(language === 'de') ? 'assets/images/flag/uk.svg' : 'assets/images/flag/at.svg'" 
+    />
+    </a>
+</div>

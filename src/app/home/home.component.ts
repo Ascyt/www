@@ -3,6 +3,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SpinningTesseractComponent } from '../spinning-tesseract/spinning-tesseract.component';
+import { LanguageValues } from '../language-values';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ import { SpinningTesseractComponent } from '../spinning-tesseract/spinning-tesse
 export class HomeComponent {
   constructor(private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, private router:Router) { }
 
+  public readonly language:string = LanguageValues.language;
   private readonly birthDate = new Date('2007-04-25');
 
   public get isBirthday(): boolean {
@@ -39,10 +41,10 @@ export class HomeComponent {
 
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(url => {
-        this.titleService.setTitle('Ascyt • Home');
-        this.metaService.updateTag({ property: 'og:title', content: 'Ascyt • Home' });
-        this.metaService.updateTag({ property: 'og:url', content: 'https://ascyt.com' + this.router.url });
-        this.metaService.updateTag({ property: 'og:description', content: 'The home page of the personal website of Ascyt (Filip Schauer).' });
+        this.titleService.setTitle((this.language === 'de' ? 'Ascyt • Startseite' : 'Ascyt • Home'));
+        this.metaService.updateTag({ property: 'og:title', content: (this.language === 'de' ? 'Ascyt • Startseite' : 'Ascyt • Home') });
+        this.metaService.updateTag({ property: 'og:url', content: (this.language === 'de' ? 'https://de.ascyt.com' : 'https://ascyt.com') + this.router.url });
+        this.metaService.updateTag({ property: 'og:description', content:  (this.language === 'de' ? 'Die Startseite der persönlichen Webseite von Ascyt (Filip Schauer).' : 'The home page of the personal website of Ascyt (Filip Schauer).') });
     });
   }
 }

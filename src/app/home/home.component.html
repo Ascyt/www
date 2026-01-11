@@ -1,12 +1,38 @@
-<h2 class="mb-2">Home</h2>
+@if (language === 'de') {
+    <h2 class="mb-2">Startseite</h2>
 
-<p class="text-left">Hey there! My name's Filip Schauer and I'm a{{startsWithVowel ? 'n' : ''}} {{currentAge}} year old programmer from Austria.</p>
-@if (isBirthday) {
-    <p class="text-left">It also happens to be my birthday today, so that's cool.</p>
+    <p class="text-left">Hallo! Ich heiße Filip Schauer, und ich bin ein {{currentAge}}-jähriger Programmierer aus Österreich.</p>
+    @if (isBirthday) {
+        <p class="text-left">Heute ist auch rein zufällig mein Geburtstag. Joa. Cool.</p>
+    }
+
+    <p class="text-left">Das ist meine persönliche Webseite. 
+        Diese ist in <a href="https://angular.io/" target="_blank" ngbTooltip="https://angular.io/">Angular</a> geschrieben, wird mithilfe von <a href="https://netlify.com/" target="_blank" ngbTooltip="https://netlify.com/">Netlify</a> gehostet, und den Quellcode findest du <a routerLink="/source" target="_blank" ngbTooltip="https://github.com/Ascyt/www">hier</a>.
+        Feedback ist willkommen. </p>
+
+    <p class="text-left">
+        <em>
+            Note: You can switch to English by clicking the flag in the top-right corner.
+        </em>
+    </p>
 }
+@else {
+    <h2 class="mb-2">Home</h2>
 
-<p class="text-left">You're currently looking at my personal website. 
-    It's written in <a href="https://angular.io/" target="_blank" ngbTooltip="https://angular.io/">Angular</a>, hosted using <a href="https://netlify.com/" target="_blank" ngbTooltip="https://netlify.com/">Netlify</a> and you can find the source-code <a routerLink="/source" target="_blank" ngbTooltip="https://github.com/Ascyt/www">here</a>.
-    Feedback is appreciated. </p>
+    <p class="text-left">Hey there! My name's Filip Schauer and I'm a{{startsWithVowel ? 'n' : ''}} {{currentAge}} year old programmer from Austria.</p>
+    @if (isBirthday) {
+        <p class="text-left">It also happens to be my birthday today, so that's cool.</p>
+    }
+
+    <p class="text-left">You're currently looking at my personal website. 
+        It's written in <a href="https://angular.io/" target="_blank" ngbTooltip="https://angular.io/">Angular</a>, hosted using <a href="https://netlify.com/" target="_blank" ngbTooltip="https://netlify.com/">Netlify</a> and you can find the source-code <a routerLink="/source" target="_blank" ngbTooltip="https://github.com/Ascyt/www">here</a>.
+        Feedback is appreciated. </p>
+
+    <p class="text-left">
+        <em>
+            Hinweis: Du kannst auf Deutsch wechseln, indem du oben rechts auf die Flagge klickst.
+        </em>
+    </p>
+}
 
 <app-spinning-tesseract></app-spinning-tesseract>
