@@ -19,7 +19,7 @@ const source:string = LanguageValues.routes['source'][LanguageValues.language];
 const notFound:string = LanguageValues.routes['NotFound'][LanguageValues.language];
 
 export const routes: Routes = [
-    {path: '', redirectTo: '/home', pathMatch: 'full'},
+    {path: '', redirectTo: `/${home}`, pathMatch: 'full'},
     {path: home, component: HomeComponent},
     {path: contact, component: ContactComponent},
     {path: projects, component: ProjectsComponent},
