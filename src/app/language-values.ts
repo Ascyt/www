@@ -25,8 +25,9 @@ export class LanguageValues {
     for (const translatedRouteKey of routesWithMostSlashesFirst) {
       const routeTranslations:{ [lang: string]: string } = LanguageValues.routes[translatedRouteKey];
       const currentLangRoute:string = routeTranslations[LanguageValues.language];
-
-      if (pathname.startsWith('/' + currentLangRoute)) {
+      
+      const regex = new RegExp(`^/${currentLangRoute}(\\/|$)`);
+      if (regex.test(pathname)) {
         const targetLangRoute:string = routeTranslations[targetLanguage];
         return '/' + targetLangRoute + pathname.slice(currentLangRoute.length + 1);
       }    
