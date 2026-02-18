@@ -18,18 +18,66 @@ import { LanguageSwitcherComponent } from './language-switcher/language-switcher
 export class AppComponent {
   isCollapsed:boolean = false;
   public language:string = LanguageValues.language;
-  public readonly homeRoute:string = LanguageValues.routes['home'][LanguageValues.language];
-  public readonly contactRoute:string = LanguageValues.routes['contact'][LanguageValues.language];
-  public readonly projectsRoute:string = LanguageValues.routes['projects'][LanguageValues.language]
-  public readonly aboutRoute:string = LanguageValues.routes['about'][LanguageValues.language];
-  public readonly notFoundRoute:string = LanguageValues.routes['NotFound'][LanguageValues.language];
+  public routes:string[] = ['home','blog','projects','contact','about'];
+  
+  public activeRouteList:string[] = [];
+  public get activeRouteListSkipFirst():string[] {
+    return this.activeRouteList.slice(1);
+  }
+  public get highestRoute():string {
+    return this.activeRouteList.length > 0 ? this.activeRouteList[this.activeRouteList.length - 1] : '';
+  }
+  public get firstRoute():string {
+    return this.activeRouteList.length > 0 ? this.activeRouteList[0] : '';
+  }
+  public getActiveRouteTitle(index:number|undefined = undefined):string {
+    if (this.activeRouteList.length === 0 || (index !== undefined && (index < 0 || index >= this.activeRouteList.length))) 
+      return '';
 
-  private cycleRoutes:string[] = [this.homeRoute, this.contactRoute, this.projectsRoute, this.aboutRoute];
+    let tryRoutes = [...this.activeRouteList];
+    if (index !== undefined) {
+      tryRoutes = tryRoutes.slice(0, index + 1);
+    }
+    const joinedTryRoute = tryRoutes.join('/');
+    const routeTitle = LanguageValues.routeTitle[joinedTryRoute];
+
+    if (routeTitle)
+      return routeTitle[this.language] || routeTitle['en'];
+
+    return this.activeRouteList[index ?? this.activeRouteList.length - 1] || '';
+  }
 
   constructor(public router:Router, public themeSwitcher:ThemeSwitcherService, private metaService: Meta, private activatedRoute: ActivatedRoute) {
     this.updateTheme();
+    
+    this.router.events.subscribe(() => {
+      this.onRouteChange();
+    });
   }
 
+  public routeUrlsUntilIndex(index:number):string {
+    if (index < 0 || index >= this.activeRouteList.length) {
+      return '';
+    }
+    return this.activeRouteList.slice(0, index + 1).join('/');
+  }
+
+  private onRouteChange():void {
+    const urlTree = this.router.parseUrl(this.router.url);
+
+    const enUrlTree = LanguageValues.getTranslatedRoute(urlTree.toString(), 'en');
+
+    this.activeRouteList = enUrlTree.split('/').filter(segment => segment.length > 0);
+  }
+
+
+  public getTranslatedRoute(pathname:string):string {
+    return LanguageValues.getTranslatedRoute(pathname, this.language, 'en');
+  }
+
+  public getRouteTitle(route:string):string {
+    return LanguageValues.routeTitle[route][this.language] || route;
+  }
 
   @HostListener('window:mousedown', ['$event'])
   handleMouseDown(event:MouseEvent):void {
@@ -50,26 +98,27 @@ export class AppComponent {
       this.updateTheme();
       return;
     }
-    
-    const routeIndex = this.cycleRoutes.indexOf(this.router.url.split('/')[1]);
+
+    const translatedRoutes = this.routes.map(route => LanguageValues.routes[route][LanguageValues.language]);
+    const routeIndex = translatedRoutes.indexOf(this.router.url.split('/')[1]);
     if (routeIndex === -1) 
     {
       if (event.key === 'ArrowRight') {
         event.preventDefault();
-        this.router.navigate([this.cycleRoutes[0]]);
+        this.router.navigate([translatedRoutes[0]]);
       }
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
-        this.router.navigate([this.cycleRoutes[this.cycleRoutes.length - 1]]);
+        this.router.navigate([translatedRoutes[translatedRoutes.length - 1]]);
       }
     }
     if (event.key === 'ArrowRight') {
       event.preventDefault();
-      this.router.navigate([this.cycleRoutes[routeIndex + 1] || this.cycleRoutes[routeIndex]]);
+      this.router.navigate([translatedRoutes[(routeIndex + 1) % translatedRoutes.length]]);
     }
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
-      this.router.navigate([this.cycleRoutes[routeIndex - 1] || this.cycleRoutes[routeIndex]]);
+      this.router.navigate([translatedRoutes[(routeIndex - 1 + translatedRoutes.length) % translatedRoutes.length]]);
     }
   }
 

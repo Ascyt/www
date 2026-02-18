@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md">
   <div class="container-fluid">
-    <a class="navbar-brand logo" [href]="'/'+homeRoute">
+    <a class="navbar-brand logo" [href]="'/'+getTranslatedRoute('home')">
       <img class="d-inline-block align-text-top" src="assets/images/logo.png" alt="Logo" />
     </a>
     <button class="navbar-toggler" [ngClass]="themeSwitcher.isLightTheme ? 'dark' : 'light'" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarNav">
@@ -8,21 +8,22 @@
     </button>
     <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item" routerLinkActive="active">
-          <a [routerLink]="'/'+homeRoute" class="nav-link">{{ language === 'de' ? 'Startseite' : 'Home' }}</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a [routerLink]="'/'+contactRoute" class="nav-link">{{ language === 'de' ? 'Kontakt' : 'Contact' }}</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a [routerLink]="'/'+projectsRoute" class="nav-link">{{ language === 'de' ? 'Projekte' : 'Projects' }}</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a [routerLink]="'/'+aboutRoute" class="nav-link">{{ language === 'de' ? 'Über Mich' : 'About' }}</a>
-        </li>
+        @for (route of routes; track routes; let i = $index) {
+          <li class="nav-item" [ngClass]="{'active': firstRoute === route}">
+            <a [routerLink]="'/'+getTranslatedRoute(route)" class="nav-link" [ngClass]="{'active': highestRoute === route}">{{getRouteTitle(route)}}</a>
+            
+            @if (activeRouteList[0] === route && activeRouteList.length > 0) {
+              @for (subRoute of activeRouteListSkipFirst; track activeRouteList; let ii = $index) {
+                <span class="nav-link-sub-seperator">/</span>
 
-        <li *ngIf="router.url === '/'+notFoundRoute" class="nav-item" routerLinkActive="active">
-          <a [routerLink]="'/'+notFoundRoute" class="nav-link" style="color:orange;">{{ language === 'de' ? 'Nicht Gefunden' : 'Not Found' }}</a>
+                <a [routerLink]="'/'+routeUrlsUntilIndex(ii+1)" class="nav-link-sub" [ngClass]="{'active': highestRoute === subRoute}">{{getActiveRouteTitle(ii+1)}}</a>
+              }
+            }
+          </li>
+        }
+
+        <li *ngIf="router.url === '/'+getTranslatedRoute('NotFound')" class="nav-item" routerLinkActive="active">
+          <a routerLink="/NotFound" class="nav-link" style="color:orange;">{{getRouteTitle('NotFound')}}</a>
         </li>
       </ul>
     </div>
