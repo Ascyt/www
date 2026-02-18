@@ -19,7 +19,7 @@ export class LanguageValues {
   public static readonly routeTitle: { [key: string]: { [lang: string]: string } } = {
     'home': { 'en': 'Home', 'de': 'Startseite' },
     'blog': { 'en': 'Blog', 'de': 'Blog' },
-    'blog/typing': { 'en': 'A Guide to Fast Typing' },
+    'blog/typing': { 'en': 'Fast Typing' },
     'contact': { 'en': 'Contact', 'de': 'Kontakt' },
     'projects': { 'en': 'Projects', 'de': 'Projekte' },
     'about': { 'en': 'About', 'de': 'Über Mich' },

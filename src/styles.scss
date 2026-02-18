@@ -24,7 +24,7 @@
     --front-mid: #c0c0c0;
     --front-high: #e0e0e0;
     --front: #ffffff;
-    --link: #8060ff;
+    --link: #a080ff;
     --link-hover: #6048c0;
     --link-transparent: #8060ff80;
     transition: 0.2s;
@@ -285,3 +285,14 @@ a,.a {
         transition: 0.2s;
     }
 }
+
+
+.key {
+    color: var(--front-mid);
+    font-weight: bold;
+    border: 1px solid var(--mid);
+    border-radius: 3px;
+    padding: 2px 5px;
+    background-color: var(--back-high);
+}
+
