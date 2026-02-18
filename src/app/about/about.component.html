@@ -1,53 +1,81 @@
-<h2 class="mb-2">About Me</h2>
-<p>There's a looot of text here, I know. This is only for people who are interested in me or in what I do, so a big part of this are just fun facts or random pieces of information about me. I have, however, split it up into sections to make it more digestible.</p>
+@if (language === 'de') {
+    <h2 class="mb-2">Über Mich</h2>
+    <p>Viel Text hier, ich weiß. Das ist für Leute, die an mich oder was ich mache interessiert sind, d.h. vieles hier sind einfach Fun Facts oder irgendwelche anderen Infos.</p>
 
-<h4 class="mb-2">General info</h4>
-<ul class="list-group list-group-flush">
-    <li class="list-group-item">
-        I love to code, mostly using Angular, the Unity3D framework, or raw C# or Python. I have a lot of plans for projects, but since school is taking away a lot of my free time, it's hard to focus on them. I'm especially guilty of starting a lot of new projects only to abandon them later - though I'm trying my best to break this habit.
-    </li>
-    <li class="list-group-item">
-        If you ever need a website, Discord bot, console application, or anything similar, feel free <a routerLink="/contact" ngbTooltip="https://ascyt.com/contact">hit me up</a>! I'm always open to new projects, and we can discuss the details and pricing.
-    </li>
-    <li class="list-group-item">
-        I'm male. Since I don't really care you can use any pronoun you want, but I might have problems trying to figure out if you're referring to me if you don't use 'he' or 'they'. 
-    </li>
-    <li class="list-group-item">
-        Despite German being my native language, I also have great English skills, mostly having acquired them from the internet. Other than that I'm also able to speak a little bit of Spanish, which I've learned using Duolingo <i>(which I quit because they stupidly removed the option to use the keyboard, seriously bring that back I beg you)</i>, and a sad amount of French, given that I've had to learn it in school for two years.
-    </li>
-    <li class="list-group-item">
-        I don't have a very wide taste in music, I mostly just listen to EDM (mostly progressive house and trance). Since most of the artists I frequently listen to are pretty unknown, you're probably not going to have heard of a lot of the songs I mostly listen to, but you can check out some of my top songs of the past 30 days <a href="https://open.spotify.com/playlist/4JWSOPMo4rrJlcpWHh5KHI" target="_blank" ngbTooltip="Automatically updated Spotify playlist with my top tracks">here</a>.<br />
-        My #1 most listened to track of all time is <a href="https://youtu.be/4rj-dkvC0AI?si=sobMLDsxnnMi42h1" target="_blank" ngbTooltip="YouTube">Sweet Mistake</a> by KAAZE, it's a good song, give it a listen.
-    </li>
-    <li class="list-group-item">
-        I like to practice typing for fun, mostly using <a href="https://data.typeracer.com/pit/profile?user=ascyt" target="_blank" ngbTooltip="My Typeracer profile">Typeracer</a>. I've been using the <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/KB_United_States_Dvorak.svg/1200px-KB_United_States_Dvorak.svg.png" target="_blank" ngbTooltip="Image showing the Dvorak layout">Dvorak keyboard layout</a> since April 2021, and am currently sitting at around 110 words per minute. Before I switched to Dvorak, I had around 70 words per minute with QWERTZ (which is similar to QWERTY with minor changes), however I switched because Dvorak is faster, more ergonomic, and, unlike other alternative layouts, is supported by most operating systems out of the box, and it even works on Windows school computers. Using <a href="https://www.typelit.io/" target="_blank" ngbTooltip="https://www.typelit.io/">TypeLit.io</a> I have also fully typed the book <a href="https://www.typelit.io/chapters/1984" target="_blank" ngbTooltip="https://www.typelit.io/chapters/1984">1984</a> by George Orwell in January to February 2025, which was a fun way for me to waste time at school. It's a good book, go read it, or if you're crazy like me, type it.
-    </li>
-    <li class="list-group-item">
-        I currently visit the higher technical school in Austria <a href="https://htl-leonding.at/" ngbTooltip="https://htl-leonding.at/" target="_blank">HTL Leonding</a> in the IT-department, which I am hopefully going to finish in mid-2026. Not sure what I am going to do after that, but I'm probably going to do something that has to do with software development, possibly in more of a leadership role, rather than just implementing GUIs or writing unit tests all day. I might even start my own company some day, however I don't think I'm ready to take any larger financial risks yet. 
-    </li>
-    <li class="list-group-item">
-        I intentionally kept the design of this website pretty simple, I'm not a big fan of having a lot of fancy animations, colors or effects on websites. To quote a <a href="https://motherf%75ckingwebsite.com" target="_blank">certain website</a>, more often than not, less is more, and fancy animations or large banners isn't necessarily going to improve things. However, there may or may not be some easter eggs hidden here though, who knows? ;) <span class="hidden-text">There might be something small in my 404 site...</span>
-    </li>
-    <li class="list-group-item">
-        If for whatever reason you'd like to donate to me, you can do so on <a routerLink="/donate" target="_blank" ngbTooltip="https://ko-fi.com/ascyt">ko-fi</a>, I would definitely appreciate it. Also, I'm open to coding commissions, so if you want me to code something for you, hit me up!
-    </li>
-    <li class="list-group-item">
-        I'm a friendly and accepting guy. If you want to chat, for any reason at all, feel free to hit me up on Discord or similar, I appreciate every DM I get! Thanks for checking out my small website :)
-    </li>
-</ul>
-<h4 class="mb-2">Technical jargon</h4>
-<ul class="list-group list-group-flush">
-    <li class="list-group-item">
-        I know a good amount of full-stack web-development, however I would say I prefer being the guy that plans the project, manages the git repo, and gives out the tasks, rather than the guy that just does exactly how he's told. However, if not, I prefer to work on frontend rather than the backend, especially not with the mess that databases can be. But honestly, anything's fine as long as it's not React.js or anything weird like Rust (I know a lot of people like it, but it just seems to complicated and I don't see much of a point in learning it).
-    </li>
-    <li class="list-group-item">
-        For most programming tasks, I use Visual Studio Code, which is a great editor that I can personally recommend. I've used Vim motions for a while, however I switched back to normal after I've realized that it doesn't really significantly improve my coding speed, and that I have my issues with how it works (why does it have the habit of copying everything I edit??). I dislike, but am also not completely opposed to, JetBrains IDEs, they do feel kind of bloated, unintuitive, and have a lot of weird quirks (why do they have to use custom file dialogs that barely work?), but I suppose they're fine, I appreciate them for having free non-commercial licenses at least.
-    </li>
-    <li class="list-group-item">
-        I mainly use Windows. I am a big fan of Linux (it really is just better and more logical than Windows), and especially the KDE Plasma desktop environment, and I would switch if it was not for one piece of software that Windows has that I can't live without: <a href="https://www.autohotkey.com/" target="_blank" ngbTooltip="https://www.autohotkey.com/">AutoHotkey</a>. I used it for a ton of configuring, for example I repurposed the CapsLock key to be a modifier key, have a mode which allows me to move the mouse with just my keyboard's home row, I have a hotkey which lets me calculate the current selection in any program, and a lot more. You can find my AutoHotkey repository <a href="https://github.com/Ascyt/ahk" target="_blank" ngbTooltip="https://github.com/Ascyt/ahk">here</a>, however keep in mind that it is hard-coded for my keyboard layout.<br />
-        I know technically anything's possible in Linux, however I just haven't found anything that's as powerful and as fast as AutohotKey, and lets me do these things with ease. It is just so difficult to do much of anything without a proper framework like AutoHotkey. If you know of a good alternative that works well on Linux, please let me know!
-    </li>
-    <li class="list-group-item">
-        The vast majority of projects I make are <b>open-source</b>, but I'm also not completely opposed to closed-source or apps that cost some sort of one-time fee, after all people need to pay their rent in one way or another. However, I do firmly believe that it is quite nonsensical to charge a subscription for a piece of software that is solely client-sided and only needs to run on the user's machine, without any sort of constant server costs. I mean, I'm not going to go to the hardware store and buy a hammer, just to have to pay 20 bucks a month to be able to use it, right? Just kind of a greedy thing to do.
-    </li>
-</ul>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            Ich mag es, zu programmieren, meistens mithilfe Unity, Angular, reines C# oder Python. Obwohl ich sehr viele Projektideen habe, bleibt mir aufgrund der Schule nicht viel Zeit über, mich auf diese zu fokussieren. Obwohl ich an sehr vielen Projekten angefangen habe zu arbeiten, habe ich auf die meisten nach kurzer Zeit vergessen, und sie nie fertiggestellt. Will aber schon langsam schauen, dass ich dem mal ein Ende setze. 
+        </li>
+        <li class="list-group-item">
+            Falls du mal eine Website, nen Discord-Bot, eine Konsolenapp, oder irgendwas ähnliches brauchst, kannst du mich gerne <a routerLink="/kontakt" ngbTooltip="https://de.ascyt.com/kontakt">kontaktieren</a>! Ich bin immer offen für neue Projekte, und wir können Näheres und Preis besprechen.
+        </li>
+        <li class="list-group-item">
+            Ich bin männlich. Pronomen sind mir relativ wurscht, also nimm einfach "er" oder welche auch immer neutrale Variante man sich für die deutsche Sprache so ausgedacht hat. Bin auch kein Teil von LGBTQ+, unterstützen tue ich es aber schon. 
+        </li>
+        <li class="list-group-item">
+            Obwohl Deutsch meine Muttersprache ist, habe ich auch gute Englischkenntnisse, welche ich größtenteils vom Internet erlernt habe. Ansonsten kann ich auch ein wenig Spanisch sprechen, was ich mit Duolingo erlernt habe <i>(womit ich aufgehört habe weil diese Deppen die Tastaturoption entfernt haben, bitte bring das zurück ich bitte euch...oh und auch noch wegen dieser ganzen KI-Sache)</i>, und traurig wenig Französisch, dafür dass ich es für zwei Jahre in der Schule gehabt habe.
+        </li>
+        <li class="list-group-item">
+            Ich habe jetzt nicht einen sehr weiten Musikgeschmack, höre mir größtenteils elektronische Musik (EDM, meistens progressive house, trance, big room o.Ä.) an. Falls es dich interessiert kannst du dier <a href="https://open.spotify.com/playlist/4JWSOPMo4rrJlcpWHh5KHI" target="_blank" ngbTooltip="Automatisch updatende Spotify-Playlist mit meinen Topsongs">hier</a> gerne meine Top-Lieder von den letzten 30 Tagen anhören.
+        </li>
+        <li class="list-group-item">
+            Ich mache gerne freizeitlich Tippübungen, größtenteils auf <a href="https://data.typeracer.com/pit/profile?user=ascyt" target="_blank" ngbTooltip="Mein Typeracer-Profil">Typeracer</a>. Seit April 2021 nutze ich das <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/KB_United_States_Dvorak.svg/1200px-KB_United_States_Dvorak.svg.png" target="_blank" ngbTooltip="Bild, welches das Dvorak Tastaturlayout zeigt">Dvorak Tastaturlayout</a>, und momentan bin ich bei ungefähr 110 Wörtern pro Minute, was ungefähr 550 Anschlägen pro Minute entspricht. Nutzen tue ich es, weil's schneller und ergonomischer als QWERTZ ist, und, anders als andere alternative Layouts, es auf den meisten Betriebssystemen vorinstalliert ist, inkl. auf Schulcomputern. Umlaute schreibe ich indem ich dafür das Layout kurz auf QWERTZ und zurück wechsle, klingt nerviger als es ist. Mit <a href="https://www.typelit.io/" target="_blank" ngbTooltip="https://www.typelit.io/">TypeLit.io</a> habe ich auch das Buch <a href="https://www.typelit.io/chapters/1984" target="_blank" ngbTooltip="https://www.typelit.io/chapters/1984">1984</a> von George Orwell auf Englisch im Jänner bis Februar 2025 abgetippt, was mir beim Zeitvertreib im Schulunterricht helfen konnte. Es ist ein gutes Buch, geh es lesen, oder falls du so verrückt wie ich bist, tipp's ab. 
+        </li>
+        <li class="list-group-item">
+            Seit kurzem habe ich ein relativ komisches Problem was Tippgeschwindigkeit angeht. Da ich nur besonders langsam, auf einer Geschwindigkeit die schon langsam meiner Tippgeschwindigkeit ähnelt, lesen kann, muss ich oft Pausen in der Länge von einer halben Sekunde oder so machen, damit mein Hirn das Wort, das ich lese, erstmal überhaupt aufnehmen kann, damit ich es dann abtippen kann. Ist oftmals durchaus hindernd, und ich bin mir auch nicht einmal wirklich sicher was ich dagegen machen kann, aber ich muss schon zugeben dass das schon irgendwie lustig ist. 
+        </li>
+        <li class="list-group-item">
+            Ich gehe momentan in die Österreichische Höhere Technische Bundeslehranstalt <a href="https://htl-leonding.at/" ngbTooltip="https://htl-leonding.at/" target="_blank">HTL Leonding</a> im Informatikzweig, was ich hoffentlich Mitte 2026 abschließen werde. Danach werde ich wahrscheinlich in irgendeiner Softwarefirma arbeiten gehen, oder vielleicht auch einmal eine eigene gründen. Ich überlege auch, ob ich berufsbegleitend mal entweder Mathematik oder Physik studieren will, da bin ich mir aber auch noch nicht sicher.
+        </li>
+        <li class="list-group-item">
+            Ich habe das Design dieser Webseite absichtlich relativ simpel gehalten, da ich kein großer Freund von vielen fancy Animationen, Farben, oder Effekten auf Websiten bin. Wie eine <a href="https://motherf%75ckingwebsite.com" target="_blank">bestimmte Webseite</a> mal gesagt hat, ist oft weniger=mehr und schicke Animationen oder große Banner machen Dinge oftmals nicht besser. Man munkelt aber dass es möglicherweise irgendwelche Easter Eggs auf dieser Seite geben könnte, naja wer weiß? ;) <span class="hidden-text">Wär's nicht irgendwie witzig, wenn's was kleines auf meiner 404-Seite geben würde?...</span>
+        </li>
+        <li class="list-group-item">
+            Falls du aus irgendwelchen Gründen auch immer mir was spenden möchtest, kannst du das gerne auf <a routerLink="/donate" target="_blank" ngbTooltip="https://ko-fi.com/ascyt">ko-fi</a> machen, das würde mich sehr freuen. Ich bin übrigens auch für Programmieraufträge offen, also wenn du möchtest, dass ich dir softwaretechnisch irgendetwas zusammenzauber, lass es mich wissen!
+        </li>
+        <li class="list-group-item">
+            Ich bin ein freundlicher und einsehbarer Mensch. Wenigstens versuch ich's das zu sein. Falls du mal, für irgendwelchen Grund auch immer, mir mal schreiben möchtest, kannst du das gerne auf Discord o.Ä. machen, ich freue mich über jede Nachricht! Danke, dass du meine kleine Website besucht hast :) <span class="text-small"><em>Übrigens, es gibt viele Punkte die ich hier absichtlich ausgelassen habe, weil ich es viel lieber habe, dass diese in einer wirklichen Konversation mit jemanden aufkommen, anstatt dass ich diese Person einfach eine Liste von Stichpunkten durchlesen lasse ;)</em></span>
+        </li>
+    </ul>
+}
+@else 
+{
+    <h2 class="mb-2">About Me</h2>
+    <p>There's a lot of text here, I know. This is only for people who are interested in me or in what I do, so a big part of this are just fun facts or random pieces of information about me.</p>
+
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            I love to code, mostly using Unity, Angular, or raw C# or Python. I have a lot of plans for projects, but since school is taking away a lot of my free time, it's hard to focus on them. I'm especially guilty of starting a lot of new projects only to abandon them later - though I'm trying my best to break this habit.
+        </li>
+        <li class="list-group-item">
+            If you ever need a website, Discord bot, console application, or anything similar, feel free <a routerLink="/contact" ngbTooltip="https://ascyt.com/contact">hit me up</a>! I'm always open to new projects, and we can discuss the details and pricing.
+        </li>
+        <li class="list-group-item">
+            I'm male. But I honestly don't really care about my pronouns, so I guess just use 'he' or 'they'. I'm also not part of the LGBTQ+, but I am supportive of it.
+        </li>
+        <li class="list-group-item">
+            Despite German being my native language, I also have great English skills, mostly having acquired them from the internet. Other than that I'm also able to speak a little bit of Spanish, which I've learned using Duolingo <i>(which I quit because they stupidly removed the option to use the keyboard, seriously bring that back I beg you...oh and also cause of their whole AI thing)</i>, and a sad amount of French, given that I've had to learn it in school for two years.
+        </li>
+        <li class="list-group-item">
+            I don't have a very wide taste in music, I mostly just listen to EDM (mostly progressive house, trance, big room and similar). If you're curious you can check out some of my top songs of the past 30 days <a href="https://open.spotify.com/playlist/4JWSOPMo4rrJlcpWHh5KHI" target="_blank" ngbTooltip="Automatically updated Spotify playlist with my top tracks">here</a>.
+        </li>
+        <li class="list-group-item">
+            I like to practice typing for fun, mostly using <a href="https://data.typeracer.com/pit/profile?user=ascyt" target="_blank" ngbTooltip="My Typeracer profile">Typeracer</a>. I've been using the <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/KB_United_States_Dvorak.svg/1200px-KB_United_States_Dvorak.svg.png" target="_blank" ngbTooltip="Image showing the Dvorak layout">Dvorak keyboard layout</a> since April 2021, and am currently sitting at around 110 words per minute. I'm using Dvorak since is faster and more ergonomic than QWERTZ/QWERTY, and, unlike other alternative layouts, is supported by most operating systems out of the box, and it even works on Windows school computers. Using <a href="https://www.typelit.io/" target="_blank" ngbTooltip="https://www.typelit.io/">TypeLit.io</a>, I have also fully typed the book <a href="https://www.typelit.io/chapters/1984" target="_blank" ngbTooltip="https://www.typelit.io/chapters/1984">1984</a> by George Orwell in January to February of 2025, which was a fun way for me to waste time at school. It's a good book, go read it, or if you're crazy like me, type it.
+        </li>
+        <li class="list-group-item">
+            I've actually kind of been running into a weird issue when it comes to typing speed - since my reading is painfully slow at a speed that is approaching how fast I'm able to type, I often find myself having to take, like, half a second pauses for my brain to even process the word I'm reading, until I can type it out. It's been slowing me down and I'm not really sure what to do about that, but I must admit it is kind of funny.
+        </li>
+        <li class="list-group-item">
+            I currently visit the higher technical school in Austria <a href="https://htl-leonding.at/" ngbTooltip="https://htl-leonding.at/" target="_blank">HTL Leonding</a> in the IT-department, which I am hopefully going to finish in mid-2026. Afterwards, I'm probably going to go work at some software company, or maybe even start my own at some point. I'm thinking of studying mathematics or physics at university as well, possibly alongside work, but I'm not really sure about that yet.
+        </li>
+        <li class="list-group-item">
+            I intentionally kept the design of this website pretty simple, I'm not a big fan of having a lot of fancy animations, colors or effects on websites. To quote a <a href="https://motherf%75ckingwebsite.com" target="_blank">certain website</a>, more often than not, less is more, and fancy animations or large banners isn't necessarily going to improve things. However, there may or may not be some easter eggs hidden here though, who knows? ;) <span class="hidden-text">There might be something small in my 404 site...</span>
+        </li>
+        <li class="list-group-item">
+            If for whatever reason you'd like to donate to me, you can do so on <a routerLink="/donate" target="_blank" ngbTooltip="https://ko-fi.com/ascyt">ko-fi</a>, I would definitely appreciate it. Also, I'm open to coding commissions, so if you want me to code something for you, hit me up!
+        </li>
+        <li class="list-group-item">
+            I'm a friendly and accepting guy. At least, I try to be. If you want to chat, for any reason at all, feel free to hit me up on Discord or similar, I appreciate every DM I get! Thanks for checking out my small website :) <span class="text-small"><em>By the way, there were a lot of points that I intentionally omitted here, since I'd rather have them be brought out in an actual conversation with someone, rather than having that person just read through a list of bullet points ;)</em></span>
+        </li>
+    </ul>
+}

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { saveAs } from 'file-saver';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { LanguageValues } from '../language-values';
  
 @Component({
   selector: 'app-secret',
@@ -13,6 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SecretComponent {
   constructor(private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, private router:Router) { }
+
+  public readonly language:string = LanguageValues.language;
 
   blur:number = 5;
   hereIndex:number = 0;

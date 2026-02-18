@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { LanguageValues } from '../language-values';
 
 @Component({
   selector: 'app-not-found',
@@ -11,6 +12,8 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 })
 export class NotFoundComponent {
   constructor(private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, private router: Router) { }
+
+  public readonly language:string = LanguageValues.language;
 
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(url => {  

@@ -4,76 +4,32 @@ import { Router, RouterOutlet, RouterModule, RouterLinkActive, ActivatedRoute } 
 import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
+import { Meta, Title } from '@angular/platform-browser';
+import { LanguageValues } from './language-values';
+import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ThemeSwitcherComponent, RouterModule, RouterLinkActive, NgbModule],
+  imports: [CommonModule, RouterOutlet, ThemeSwitcherComponent, RouterModule, RouterLinkActive, NgbModule, LanguageSwitcherComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  public isCollapsed:boolean = false;
-  public routes:string[] = ['home','blog','projects','contact','about']
-  public activeRouteList:string[] = [];
-  public get activeRouteListSkipFirst():string[] {
-    return this.activeRouteList.slice(1);
-  }
-  public get highestRoute():string {
-    return this.activeRouteList.length > 0 ? this.activeRouteList[this.activeRouteList.length - 1] : '';
-  }
-  public get firstRoute():string {
-    return this.activeRouteList.length > 0 ? this.activeRouteList[0] : '';
-  }
-  public get formattedActiveRouteList():string[] {
-    if (this.activeRouteList.length === 0) 
-      return [];
+  isCollapsed:boolean = false;
+  public language:string = LanguageValues.language;
+  public readonly homeRoute:string = LanguageValues.routes['home'][LanguageValues.language];
+  public readonly contactRoute:string = LanguageValues.routes['contact'][LanguageValues.language];
+  public readonly projectsRoute:string = LanguageValues.routes['projects'][LanguageValues.language]
+  public readonly aboutRoute:string = LanguageValues.routes['about'][LanguageValues.language];
+  public readonly notFoundRoute:string = LanguageValues.routes['NotFound'][LanguageValues.language];
 
-    const formattedList = this.activeRouteList.map(route => {
-      return this.formatSingleRoute(route);
-    });
+  private cycleRoutes:string[] = [this.homeRoute, this.contactRoute, this.projectsRoute, this.aboutRoute];
 
-    switch (this.activeRouteList[0]) {
-      case 'blog':
-        if (this.activeRouteList.length >= 2) {
-          switch (this.activeRouteList[1]) {
-            case '4d':
-              formattedList[1] = 'Simulating 4D';
-              break;
-          }
-        }
-    }
-
-    return formattedList;
-  }
-
-  constructor(public router:Router, public themeSwitcher:ThemeSwitcherService, private activatedRoute:ActivatedRoute) {
+  constructor(public router:Router, public themeSwitcher:ThemeSwitcherService, private metaService: Meta, private activatedRoute: ActivatedRoute) {
     this.updateTheme();
-
-    this.router.events.subscribe(() => {
-      this.onRouteChange();
-    });
   }
 
-  public formatSingleRoute(route:string):string {
-    return route
-      .split('-')
-      .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-      .join(' ');
-  }
-  public routeUrlsUntilIndex(index:number):string {
-    if (index < 0 || index >= this.activeRouteList.length) {
-      return '';
-    }
-    return this.activeRouteList.slice(0, index + 1).join('/');
-  }
-
-  private onRouteChange():void {
-    const urlTree = this.router.parseUrl(this.router.url);
-    this.activeRouteList = urlTree.root.children['primary']
-      ? urlTree.root.children['primary'].segments.map(segment => segment.path)
-      : [];
-  }
 
   @HostListener('window:mousedown', ['$event'])
   handleMouseDown(event:MouseEvent):void {
@@ -95,67 +51,116 @@ export class AppComponent {
       return;
     }
     
-    const routeIndex = this.routes.indexOf(this.router.url.split('/')[1]);
+    const routeIndex = this.cycleRoutes.indexOf(this.router.url.split('/')[1]);
     if (routeIndex === -1) 
     {
       if (event.key === 'ArrowRight') {
         event.preventDefault();
-        this.router.navigate([this.routes[0]]);
+        this.router.navigate([this.cycleRoutes[0]]);
       }
       if (event.key === 'ArrowLeft') {
         event.preventDefault();
-        this.router.navigate([this.routes[this.routes.length - 1]]);
+        this.router.navigate([this.cycleRoutes[this.cycleRoutes.length - 1]]);
       }
     }
     if (event.key === 'ArrowRight') {
       event.preventDefault();
-      this.router.navigate([this.routes[routeIndex + 1] || this.routes[routeIndex]]);
+      this.router.navigate([this.cycleRoutes[routeIndex + 1] || this.cycleRoutes[routeIndex]]);
     }
     if (event.key === 'ArrowLeft') {
       event.preventDefault();
-      this.router.navigate([this.routes[routeIndex - 1] || this.routes[routeIndex]]);
+      this.router.navigate([this.cycleRoutes[routeIndex - 1] || this.cycleRoutes[routeIndex]]);
     }
   }
+
+  
+  ngOnInit(): void {
+    if (this.language === 'de') {
+      this.metaService.updateTag({property: 'og:url', content: 'https://de.ascyt.com/'});
+      this.metaService.updateTag({property: 'og:image:alt', content: 'Logo von Ascyt'});
+      this.metaService.updateTag({property: 'og:description', content: 'Die persönliche Webseite von Ascyt (Filip Schauer), einem jungen Entwickler aus Österreich.'});
+      this.metaService.updateTag({property: 'og:locale', content: 'de_AT'});
+      this.metaService.updateTag({property: 'og:locale', content: 'de_DE'});
+      this.metaService.updateTag({property: 'og:profile:gender', content: 'männlich'});
+    }
+  };
 
   toggleTheme() {
     this.updateTheme();
   }
   updateTheme() {
-    switch (this.themeSwitcher.themeSwitchCounter) { // ignore this
-      case 10:
-        alert('bro stop')
-        break;
-      case 20:
-        alert('seriously')
-        break;
-      case 30:
-        alert('stop it')
-        break;
-      case 40:
-        alert('you\'re gonna break it')
-        break;
-      case 50:
-        document.body.className = 'what'
-        alert('great. you broke it.')
-        return;
-      case 60:
-        alert('it\'s broken')
-        return;
-      case 70:
-        alert('it\'s still broken')
-        return;
-      case 80:
-        alert('it\'s no use man. it\'s broken')
-        return;
-      case 90:
-        alert('you\'re still here?')
-        return;
-      case 100:
-        alert('fine. you win. i\'ll fix it.')
-        this.themeSwitcher.themeSwitchCounter = 0;
-        break;
-    } if (this.themeSwitcher.themeSwitchCounter > 50) return;
-
+    if (this.language === 'de') {
+      switch (this.themeSwitcher.themeSwitchCounter) { // ignore this
+        case 10:
+          alert('bro hör auf')
+          break;
+        case 20:
+          alert('ernsthaft')
+          break;
+        case 30:
+          alert('lass es bleiben')
+          break;
+        case 40:
+          alert('du machst es sonst kaputt')
+          break;
+        case 50:
+          document.body.className = 'what'
+          alert('super. jetzt ist\'s hin.')
+          return;
+        case 60:
+          alert('es ist kaputt')
+          return;
+        case 70:
+          alert('es ist immer noch kaputt')
+          return;
+        case 80:
+          alert('es hat keinen zweck, man. Es ist kaputt')
+          return;
+        case 90:
+          alert('immer noch da?')
+          return;
+        case 100:
+          alert('okay. du hast gewonnen. ich repariere\'s.')
+          this.themeSwitcher.themeSwitchCounter = 0;
+          break;
+      } if (this.themeSwitcher.themeSwitchCounter > 50) return;
+    }
+    else {
+      switch (this.themeSwitcher.themeSwitchCounter) { // ignore this
+        case 10:
+          alert('bro stop')
+          break;
+        case 20:
+          alert('seriously')
+          break;
+        case 30:
+          alert('stop it')
+          break;
+        case 40:
+          alert('you\'re gonna break it')
+          break;
+        case 50:
+          document.body.className = 'what'
+          alert('great. you broke it.')
+          return;
+        case 60:
+          alert('it\'s broken')
+          return;
+        case 70:
+          alert('it\'s still broken')
+          return;
+        case 80:
+          alert('it\'s no use man. it\'s broken')
+          return;
+        case 90:
+          alert('you\'re still here?')
+          return;
+        case 100:
+          alert('fine. you win. i\'ll fix it.')
+          this.themeSwitcher.themeSwitchCounter = 0;
+          break;
+      } if (this.themeSwitcher.themeSwitchCounter > 50) return;
+    }
 
     document.body.className = this.themeSwitcher.themeClass;
   }

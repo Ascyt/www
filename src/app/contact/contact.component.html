@@ -1,12 +1,28 @@
-<h2 class="mb-2">Contact</h2>
+@if (language === 'de') {
+    <h2 class="mb-2">Kontakt</h2>
 
-<p>I call myself "Ascyt" pretty much everywhere. Here's all of my stuff:</p>
-<ul class="list-group">
-    <li class="list-group-item">Email<b>contact<span style="font-size: 0;">&lt;&lt;!REMOVE_THIS!&gt;&gt;</span>&#64;ascyt.com</b></li>
-    <li class="list-group-item">Discord<b>&#64;ascyt</b></li>
-    <a href="/github" target="_blank" class="list-group-item list-group-item-action">GitHub <span class="url">https://github.com/Ascyt</span></a>
-    <a href="/youtube" target="_blank" class="list-group-item list-group-item-action">YouTube <span class="url">https://www.youtube.com/Ascyt</span></a>
-    <a href="/bsky" target="_blank" class="list-group-item list-group-item-action">Bluesky <span class="url">https://bsky.app/profile/ascyt.com</span></a>
-</ul>
+    <p>Ich nenne mich "Ascyt" mehr oder weniger überall. Hier sind meine Sachen:</p>
+    <ul class="list-group">
+        <li class="list-group-item">Email<b>contact<span style="font-size: 0;">&lt;&lt;!ENTFERNE_MICH!&gt;&gt;</span>&#64;ascyt.com</b></li>
+        <li class="list-group-item">Discord<b>&#64;ascyt</b></li>
+        <a href="/github" target="_blank" class="list-group-item list-group-item-action">GitHub <span class="url">https://github.com/Ascyt</span></a>
+        <a href="/youtube" target="_blank" class="list-group-item list-group-item-action">YouTube <span class="url">https://www.youtube.com/Ascyt</span></a>
+        <a href="/bsky" target="_blank" class="list-group-item list-group-item-action">Bluesky <span class="url">https://bsky.app/profile/ascyt.com</span></a>
+    </ul>
 
-<p *ngIf="themeSwitcherService.isLightTheme" style="margin-top: 200px; color:rgba(0, 0, 0, 0.1); font-size: x-small; position:absolute">imagine using light mode</p>
+    <p *ngIf="themeSwitcherService.isLightTheme" style="margin-top: 200px; color:rgba(0, 0, 0, 0.1); font-size: x-small; position:absolute">stell dir vor man ist light-mode-nutzer</p>
+}
+@else {
+    <h2 class="mb-2">Contact</h2>
+
+    <p>I call myself "Ascyt" pretty much everywhere. Here's some of my stuff:</p>
+    <ul class="list-group">
+        <li class="list-group-item">Email<b>contact<span style="font-size: 0;">&lt;&lt;!REMOVE_THIS!&gt;&gt;</span>&#64;ascyt.com</b></li>
+        <li class="list-group-item">Discord<b>&#64;ascyt</b></li>
+        <a href="/github" target="_blank" class="list-group-item list-group-item-action">GitHub <span class="url">https://github.com/Ascyt</span></a>
+        <a href="/youtube" target="_blank" class="list-group-item list-group-item-action">YouTube <span class="url">https://www.youtube.com/Ascyt</span></a>
+        <a href="/bsky" target="_blank" class="list-group-item list-group-item-action">Bluesky <span class="url">https://bsky.app/profile/ascyt.com</span></a>
+    </ul>
+
+    <p *ngIf="themeSwitcherService.isLightTheme" style="margin-top: 200px; color:rgba(0, 0, 0, 0.1); font-size: x-small; position:absolute">imagine using light mode</p>
+}

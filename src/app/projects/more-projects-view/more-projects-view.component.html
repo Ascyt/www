@@ -1,9 +1,19 @@
-<div class="modal-header">
-    <h4 class="modal-title">More projects (not chronological)</h4> 
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
+@if (language === 'de') {
+    <div class="modal-header">
+        <h4 class="modal-title">Weitere Projekte (nicht chronologisch)</h4> 
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+@else {
+    <div class="modal-header">
+        <h4 class="modal-title">More projects (not chronological)</h4> 
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
 <div class="modal-body">
     <div ngbAccordion [closeOthers]="true" class="accordion mb-2">
         <div ngbAccordionItem class="accordion-item" *ngFor="let project of projects">
@@ -18,6 +28,14 @@
             </div>
         </div>
     </div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Close</button>
-</div>
+
+@if (language === 'de') {
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Schließen    </button>
+    </div>    
+}
+@else {
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+}

@@ -1,7 +1,17 @@
-<h2 class="mb-4">Projects</h2>
+@if (language === 'de') {
+    <h2 class="mb-4">Projekte</h2>
 
-<p>Most of my projects are <a href="https://en.wikipedia.org/wiki/Open_source" target="_blank" ngbTooltip="https://en.wikipedia.org/wiki/Open_source">Open Source</a> and the source code for them can be found in my <a href="/github" target="_blank" ngbTooltip="https://github.com/Ascyt">GitHub</a>.</p>
+    <p>Die meisten meiner Projekte sind <a href="https://de.wikipedia.org/wiki/Open_Source" target="_blank" ngbTooltip="https://de.wikipedia.org/wiki/Open_Source">Open Source</a> und der Quellcode dafür ist auf meinem <a href="/github" target="_blank" ngbTooltip="https://github.com/Ascyt">GitHub</a> zu finden.</p>
 
+    <p>
+        <strong>Hinweis</strong>: Die meisten dieser Projekte sind nur auf Englisch verfügbar.
+    </p>
+}
+@else {
+    <h2 class="mb-4">Projects</h2>
+
+    <p>Most of my projects are <a href="https://en.wikipedia.org/wiki/Open_source" target="_blank" ngbTooltip="https://en.wikipedia.org/wiki/Open_source">Open Source</a> and the source code for them can be found in my <a href="/github" target="_blank" ngbTooltip="https://github.com/Ascyt">GitHub</a>.</p>
+}
 <!-- Grid of projects -->
 <div class="row">
     <div class="col-md-4" *ngFor="let project of projects">
