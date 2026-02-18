@@ -1,5 +1,5 @@
 export class LanguageValues {
-  private static readonly overrideLanguage:string | null = 'de'; // 'de' or 'en' to override auto-detection
+  private static readonly overrideLanguage:string | null = null; // 'de' or 'en' to override auto-detection
 
   public static readonly language:string = LanguageValues.overrideLanguage ?? 
     (window.location.hostname.startsWith('de') ? 'de' : 'en');
@@ -19,7 +19,7 @@ export class LanguageValues {
   public static readonly routeTitle: { [key: string]: { [lang: string]: string } } = {
     'home': { 'en': 'Home', 'de': 'Startseite' },
     'blog': { 'en': 'Blog', 'de': 'Blog' },
-    'blog/4d': { 'en': 'test' },
+    'blog/typing': { 'en': 'A Guide to Fast Typing' },
     'contact': { 'en': 'Contact', 'de': 'Kontakt' },
     'projects': { 'en': 'Projects', 'de': 'Projekte' },
     'about': { 'en': 'About', 'de': 'Über Mich' },

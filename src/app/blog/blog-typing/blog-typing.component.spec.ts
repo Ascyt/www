@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BlogFourDComponent } from './blog-four-d.component';
+import { BlogTypingComponent } from './blog-typing.component';
 
-describe('BlogFourDComponent', () => {
-  let component: BlogFourDComponent;
-  let fixture: ComponentFixture<BlogFourDComponent>;
+describe('BlogTypingComponent', () => {
+  let component: BlogTypingComponent;
+  let fixture: ComponentFixture<BlogTypingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BlogFourDComponent]
+      imports: [BlogTypingComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(BlogFourDComponent);
+    fixture = TestBed.createComponent(BlogTypingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

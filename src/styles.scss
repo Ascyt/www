@@ -270,3 +270,18 @@ a,.a {
     text-decoration-color: var(--link);
     transition: 0.2s;
 }
+
+.note {
+    font-style: italic;
+    margin-left: 20px;
+    color: var(--front-mid)
+}
+
+.hoverable {
+    text-decoration: underline dotted 1px var(--link) !important;
+    transition: 0.3s;
+    &:hover {
+        text-decoration: underline dotted 1px var(--link-hover) !important;
+        transition: 0.2s;
+    }
+}
