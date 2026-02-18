@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md">
   <div class="container-fluid">
-    <a class="navbar-brand logo" [href]="'/'+getTranslatedRoute('home')">
+    <a class="navbar-brand logo" [href]="'/' + translatedRoutesPlain['home']">
       <img class="d-inline-block align-text-top" src="assets/images/logo.png" alt="Logo" />
     </a>
     <button class="navbar-toggler" [ngClass]="themeSwitcher.isLightTheme ? 'dark' : 'light'" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarNav">
@@ -10,20 +10,20 @@
       <ul class="navbar-nav">
         @for (route of routes; track routes; let i = $index) {
           <li class="nav-item" [ngClass]="{'active': firstRoute === route}">
-            <a [routerLink]="'/'+getTranslatedRoute(route)" class="nav-link" [ngClass]="{'active': highestRoute === route}">{{getRouteTitle(route)}}</a>
+            <a [routerLink]="'/' + translatedRoutesPlain[route]" class="nav-link" [ngClass]="{'active': highestRoute === route}">{{routeTitlePlain[route] || getRouteTitle(route)}}</a>
             
             @if (activeRouteList[0] === route && activeRouteList.length > 0) {
               @for (subRoute of activeRouteListSkipFirst; track activeRouteList; let ii = $index) {
                 <span class="nav-link-sub-seperator">/</span>
 
-                <a [routerLink]="'/'+routeUrlsUntilIndex(ii+1)" class="nav-link-sub" [ngClass]="{'active': highestRoute === subRoute}">{{getActiveRouteTitle(ii+1)}}</a>
+                <a [routerLink]="'/' + routeUrlsUntilIndex(ii+1)" class="nav-link-sub" [ngClass]="{'active': highestRoute === subRoute}">{{getActiveRouteTitle(ii+1)}}</a>
               }
             }
           </li>
         }
 
-        <li *ngIf="router.url === '/'+getTranslatedRoute('NotFound')" class="nav-item" routerLinkActive="active">
-          <a routerLink="/NotFound" class="nav-link" style="color:orange;">{{getRouteTitle('NotFound')}}</a>
+        <li *ngIf="router.url === '/' + translatedRoutesPlain['NotFound']" class="nav-item" routerLinkActive="active">
+          <a routerLink="/NotFound" class="nav-link" style="color:orange;">{{routeTitlePlain['NotFound'] || getRouteTitle('NotFound')}}</a>
         </li>
       </ul>
     </div>

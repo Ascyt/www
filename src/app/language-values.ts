@@ -1,5 +1,5 @@
 export class LanguageValues {
-  private static readonly overrideLanguage:string | null = null; // 'de' or 'en' to override auto-detection
+  private static readonly overrideLanguage:string | null = 'de'; // 'de' or 'en' to override auto-detection
 
   public static readonly language:string = LanguageValues.overrideLanguage ?? 
     (window.location.hostname.startsWith('de') ? 'de' : 'en');
@@ -31,8 +31,7 @@ export class LanguageValues {
       pathname = '/' + pathname;
     }
 
-     const currentLanguage:string = fromLanguage ?? LanguageValues.language;
-
+    const currentLanguage:string = fromLanguage ?? LanguageValues.language;
 
     // To ensure that routes with slashes are matched correctly (e.g., 'about/me'), we sort by the number of slashes
     const routesWithMostSlashesFirst = Object.keys(LanguageValues.routes).sort((a, b) => {

@@ -1,6 +1,6 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, signal, WritableSignal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet, RouterModule, RouterLinkActive, ActivatedRoute } from '@angular/router';
+import { Router, RouterOutlet, RouterModule, RouterLinkActive, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ThemeSwitcherService } from './theme-switcher/theme-switcher.service';
@@ -21,6 +21,12 @@ export class AppComponent {
   public routes:string[] = ['home','blog','projects','contact','about'];
   
   public activeRouteList:string[] = [];
+  public translatedRoutes: WritableSignal<string[]> = signal<string[]>([]);
+  public translatedRoutesMap: WritableSignal<Record<string,string>> = signal<Record<string,string>>({});
+  private routeTitleCache: WritableSignal<Record<string,string>> = signal<Record<string,string>>({});
+  // plain objects for template binding (cheap property access)
+  public translatedRoutesPlain: Record<string,string> = {};
+  public routeTitlePlain: Record<string,string> = {};
   public get activeRouteListSkipFirst():string[] {
     return this.activeRouteList.slice(1);
   }
@@ -39,10 +45,9 @@ export class AppComponent {
       tryRoutes = tryRoutes.slice(0, index + 1);
     }
     const joinedTryRoute = tryRoutes.join('/');
-    const routeTitle = LanguageValues.routeTitle[joinedTryRoute];
+    const routeTitle = this.routeTitleCache()[joinedTryRoute];
 
-    if (routeTitle)
-      return routeTitle[this.language] || routeTitle['en'];
+    if (routeTitle) return routeTitle;
 
     return this.activeRouteList[index ?? this.activeRouteList.length - 1] || '';
   }
@@ -50,9 +55,11 @@ export class AppComponent {
   constructor(public router:Router, public themeSwitcher:ThemeSwitcherService, private metaService: Meta, private activatedRoute: ActivatedRoute) {
     this.updateTheme();
     
-    this.router.events.subscribe(() => {
-      this.onRouteChange();
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) this.onRouteChange();
     });
+    // initialize route/translation cache once on startup
+    this.onRouteChange();
   }
 
   public routeUrlsUntilIndex(index:number):string {
@@ -68,15 +75,42 @@ export class AppComponent {
     const enUrlTree = LanguageValues.getTranslatedRoute(urlTree.toString(), 'en');
 
     this.activeRouteList = enUrlTree.split('/').filter(segment => segment.length > 0);
+    // update cached translations and titles only when the route changes
+    this.updateTranslationCache();
+  }
+
+  private updateTranslationCache(): void {
+    // cache simple route name translations (e.g. 'home' -> 'startseite') using Signals
+    const translated = this.routes.map(route => LanguageValues.routes[route][LanguageValues.language]);
+    const map: Record<string,string> = {};
+    for (let i = 0; i < this.routes.length; i++) {
+      map[this.routes[i]] = translated[i];
+    }
+    this.translatedRoutes.set(translated);
+    this.translatedRoutesMap.set(map);
+    // also keep plain objects for template read access to avoid method calls
+    this.translatedRoutesPlain = map;
+
+    // cache all route titles for current language (includes joined routes)
+    const titles: Record<string,string> = {};
+    for (const key in LanguageValues.routeTitle) {
+      const entry = (LanguageValues.routeTitle as any)[key];
+      if (entry) titles[key] = entry[this.language] || entry['en'];
+    }
+    this.routeTitleCache.set(titles);
+    this.routeTitlePlain = titles;
   }
 
 
   public getTranslatedRoute(pathname:string):string {
+    // for simple route names use the cached translation to avoid repeated work
+    const map = this.translatedRoutesMap();
+    if (map && map[pathname]) return map[pathname];
     return LanguageValues.getTranslatedRoute(pathname, this.language, 'en');
   }
 
   public getRouteTitle(route:string):string {
-    return LanguageValues.routeTitle[route][this.language] || route;
+    return this.routeTitleCache()[route] || route;
   }
 
   @HostListener('window:mousedown', ['$event'])
@@ -99,7 +133,7 @@ export class AppComponent {
       return;
     }
 
-    const translatedRoutes = this.routes.map(route => LanguageValues.routes[route][LanguageValues.language]);
+    const translatedRoutes = this.translatedRoutes().length ? this.translatedRoutes() : this.routes.map(route => LanguageValues.routes[route][LanguageValues.language]);
     const routeIndex = translatedRoutes.indexOf(this.router.url.split('/')[1]);
     if (routeIndex === -1) 
     {

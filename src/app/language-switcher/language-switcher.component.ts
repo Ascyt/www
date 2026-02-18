@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageValues } from '../language-values';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-language-switcher',
@@ -13,8 +14,9 @@ import { LanguageValues } from '../language-values';
 })
 export class LanguageSwitcherComponent {
   public readonly language:string = LanguageValues.language;
+  public pathnameAfterClickPlain: string = '';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit():void {
     // Load svgs to cache
@@ -24,9 +26,14 @@ export class LanguageSwitcherComponent {
       const img = new Image();
       img.src = url;
     });
-  }
 
-  public get pathnameAfterClick():string {
-    return LanguageValues.getTranslatedRoute(window.location.pathname, this.language === 'de' ? 'en' : 'de');
+    // initialize cached translated pathname and update only on navigation
+    this.pathnameAfterClickPlain = LanguageValues.getTranslatedRoute(window.location.pathname, this.language === 'de' ? 'en' : 'de');
+    this.router.events.subscribe((ev) => {
+      if (ev instanceof NavigationEnd) {
+        this.pathnameAfterClickPlain = LanguageValues.getTranslatedRoute(window.location.pathname, this.language === 'de' ? 'en' : 'de');
+      }
+    });
   }
+  
 }
