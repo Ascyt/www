@@ -30,6 +30,10 @@ export class BlogTypingComponent {
     return window.location.hostname;
   }
 
+  public get language():string {
+    return LanguageValues.language;
+  }
+
   public constructor(private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, public router:Router) {}
   
   ngOnInit(): void {
