@@ -1,24 +1,25 @@
 @if (this.language === 'de') {
-  <h2 class="mb-2">Blogbeiträge</h2>
+  <h2 class="mb-4">Blogbeiträge</h2>
 } @else {
-  <h2 class="mb-2">Blog Posts</h2>
+  <h2 class="mb-4">Blog Posts</h2>
 }
 
-<div class="row">
-    @for (blog of blogs; track $index) {
-        <div class="col-md-4">
+@for (blog of blogs; track $index) {
+    <div class="row">
         <a [routerLink]="blog.routerLink" >
             <div [class]="'card ' + themeSwitcher.themeClass">
                 <div class="background-image" [style.background-image]="'url(' + blog.image + ')'">
                     <div class="overlay"></div>
                     <div class="card-body">
                         <h5 class="card-title">{{ blog.name }}</h5>
-                        <h6 class="card-url mb-2">{{ currentRoute }}/{{ blog.routerLink }}</h6>
+                        <h6 class="card-url mb-3">{{ currentRoute }}/{{ blog.routerLink }}</h6>
                         <p class="card-text">{{ blog.description }}</p>
+                        @if (blog.metaInfo) {
+                             <p class="card-meta-info">{{ blogMetaInfoToString(blog.metaInfo) }}</p>
+                        }
                     </div>
                 </div>    
             </div>
         </a>
-        </div>
-    }
-</div>
+    </div>
+}

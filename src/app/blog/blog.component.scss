@@ -1,5 +1,8 @@
 a {
     text-decoration: none;
+    &::after {
+        display: none;
+    }
 }
 
 .overlay {
@@ -79,33 +82,11 @@ a {
     border: none;
 }
 
-.card-text {
-    color: var(--front-high);
-    overflow: auto;
-}
-
 .card-title {
     position: relative;
     z-index: 1;
     color: var(--front);
     font-weight: bolder;
-}
-
-.more-view {
-    .card-title {
-        text-align: center;
-        color: #808080;
-        font-size: 1em;
-    }
-
-    background-color: var(--back-low);
-    border-color: var(--back-low);
-
-    &:hover {
-        border-color: var(--mid);
-        box-shadow: 0 0 20px var(--front-low) !important;
-        transition: 0.2s;
-    }
 }
 
 .card-url {
@@ -127,10 +108,22 @@ a {
         left: 0;
         bottom: 0;
         width: 0;
-        height: 1px; // Adjust the thickness of the underline
+        height: 1px; 
         background-color: var(--link-hover);
         transition: width 0.3s ease-in-out;
     }
+}
+
+.card-text {
+    color: var(--front-high);
+    overflow: auto;
+}
+
+.card-meta-info {
+    color: var(--mid);
+    font-size: 0.75em;
+    margin: 0;
+    padding: 0;
 }
 
 .row {

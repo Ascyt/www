@@ -3,12 +3,16 @@ import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LanguageValues } from '../language-values';
 import { ThemeSwitcherService } from '../theme-switcher/theme-switcher.service';
+import { BlogMetaInfo } from './models/meta-info';
+import { BlogTypingComponent } from './blog-typing/blog-typing.component';
 
 interface Blog {
   name: string;
   description: string|null;
 
   routerLink: string|null;
+  
+  metaInfo?: BlogMetaInfo;
 
   image: string|null;
 }
@@ -40,10 +44,16 @@ export class BlogComponent {
     });
   }
 
-    blogs: Blog[] = this.language === 'de' ? [
-      {name: '[EN] A Guide to Fast Typing', description: 'A comprehensive guide to learning to type quickly on a computer keyboard.', routerLink: 'typing', image: 'assets/images/blog/typing/typing.png'},
-    ] : [
-      {name: 'A Guide to Fast Typing', description: 'A comprehensive guide to learning to type quickly on a computer keyboard.', routerLink: 'typing', image: 'assets/images/blog/typing/typing.png'},
-    ];
-  
+  public static blogMetaInfoToString(metaInfo:BlogMetaInfo):string {
+    return `Created: ${metaInfo.created.toLocaleDateString()}, last updated: ${metaInfo.lastUpdated.toLocaleDateString()}`;
+  }
+  public blogMetaInfoToString(metaInfo:BlogMetaInfo):string {
+    return BlogComponent.blogMetaInfoToString(metaInfo);
+  }
+
+  blogs: Blog[] = this.language === 'de' ? [
+    {name: '[EN] A Guide to Fast Typing', description: 'A comprehensive guide to learning to type quickly on a computer keyboard.', routerLink: 'typing', metaInfo: BlogTypingComponent.metaInfo, image: 'assets/images/blog/typing/typing.jpg'},
+  ] : [
+    {name: 'A Guide to Fast Typing', description: 'A comprehensive guide to learning to type quickly on a computer keyboard.', routerLink: 'typing', metaInfo: BlogTypingComponent.metaInfo, image: 'assets/images/blog/typing/typing.jpg'},
+  ];
 }
