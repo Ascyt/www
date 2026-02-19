@@ -8,8 +8,11 @@ import { RedirectingComponent } from './redirecting/redirecting.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { SecretComponent } from './secret/secret.component';
 import { LanguageValues } from './language-values';
+import { BlogComponent } from './blog/blog.component';
+import { BlogTypingComponent } from './blog/blog-typing/blog-typing.component';
 
 const home:string = LanguageValues.routes['home'][LanguageValues.language];
+const blog:string = LanguageValues.routes['blog'][LanguageValues.language];
 const contact:string = LanguageValues.routes['contact'][LanguageValues.language];
 const projects:string = LanguageValues.routes['projects'][LanguageValues.language];
 const about:string = LanguageValues.routes['about'][LanguageValues.language];
@@ -21,6 +24,8 @@ const notFound:string = LanguageValues.routes['NotFound'][LanguageValues.languag
 export const routes: Routes = [
     {path: '', redirectTo: `/${home}`, pathMatch: 'full'},
     {path: home, component: HomeComponent},
+    {path: blog, component: BlogComponent},
+    {path: `${blog}/typing`, component: BlogTypingComponent},
     {path: contact, component: ContactComponent},
     {path: projects, component: ProjectsComponent},
     {path: `${projects}/smsh`, component:RedirectingComponent, canActivate: [RedirectGuard], data: {externalUrl: 'https://smsh.ascyt.com/'}},

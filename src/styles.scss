@@ -24,8 +24,9 @@
     --front-mid: #c0c0c0;
     --front-high: #e0e0e0;
     --front: #ffffff;
-    --link: #8060ff;
+    --link: #a080ff;
     --link-hover: #6048c0;
+    --link-transparent: #8060ff80;
     transition: 0.2s;
 }
 
@@ -41,6 +42,7 @@
     --front: #000000;
     --link: #8060ff;
     --link-hover: #6048c0;
+    --link-transparent: #8060ff80;
     transition: 0.2s;
 }
 
@@ -83,9 +85,10 @@ body {
     color: var(--front);
 }
 
-a {
+a,.a {
     color: var(--link);
     text-decoration: none;
+    cursor: pointer;
     position: relative; 
     transition: color 0.3s;
 
@@ -244,3 +247,52 @@ a {
 .accordion-body {
     color: var(--front-mid);
 }
+
+
+.notice {
+    color: var(--back-low);
+    font-size: small;
+}
+
+.notice>a {
+    color: var(--back-low);
+    text-decoration: underline;
+    text-decoration-color: var(--back-low);
+    transition: 0.2s;
+
+    &::after {
+        display: none; // Remove the underline effect
+    }
+}
+
+.notice>a:hover {
+    color: var(--link);
+    text-decoration-color: var(--link);
+    transition: 0.2s;
+}
+
+.note {
+    font-style: italic;
+    margin-left: 20px;
+    color: var(--front-mid)
+}
+
+.hoverable {
+    text-decoration: underline dotted 1px var(--link) !important;
+    transition: 0.3s;
+    &:hover {
+        text-decoration: underline dotted 1px var(--link-hover) !important;
+        transition: 0.2s;
+    }
+}
+
+
+.key {
+    color: var(--front-mid);
+    font-weight: bold;
+    border: 1px solid var(--mid);
+    border-radius: 3px;
+    padding: 2px 5px;
+    background-color: var(--back-high);
+}
+
