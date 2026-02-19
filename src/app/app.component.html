@@ -8,12 +8,12 @@
     </button>
     <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        @for (route of routes; track routes; let i = $index) {
+        @for (route of routes; track route; let i = $index) {
           <li class="nav-item" [ngClass]="{'active': firstRoute === route}">
             <a [routerLink]="'/' + translatedRoutesPlain[route]" class="nav-link" [ngClass]="{'active': highestRoute === route}">{{routeTitlePlain[route] || getRouteTitle(route)}}</a>
             
             @if (activeRouteList[0] === route && activeRouteList.length > 0) {
-              @for (subRoute of activeRouteListSkipFirst; track activeRouteList; let ii = $index) {
+              @for (subRoute of activeRouteListSkipFirst; track subRoute; let ii = $index) {
                 <span class="nav-link-sub-seperator">/</span>
 
                 <a [routerLink]="'/' + routeUrlsUntilIndex(ii+1)" class="nav-link-sub" [ngClass]="{'active': highestRoute === subRoute}">{{getActiveRouteTitle(ii+1)}}</a>
@@ -22,8 +22,8 @@
           </li>
         }
 
-        <li *ngIf="router.url === '/' + translatedRoutesPlain['NotFound']" class="nav-item" routerLinkActive="active">
-          <a routerLink="/NotFound" class="nav-link" style="color:orange;">{{routeTitlePlain['NotFound'] || getRouteTitle('NotFound')}}</a>
+        <li *ngIf="router.url === '/' + (notFoundRoute)" class="nav-item" routerLinkActive="active">
+          <a [routerLink]="'/' + (notFoundRoute)" class="nav-link active" style="color:orange;">{{getRouteTitle('NotFound')}}</a>
         </li>
       </ul>
     </div>

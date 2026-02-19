@@ -20,6 +20,10 @@ export class AppComponent {
   public language:string = LanguageValues.language;
   public routes:string[] = ['home','blog','projects','contact','about'];
   
+  public get notFoundRoute():string {
+    return LanguageValues.routes['NotFound'][LanguageValues.language];
+  }
+
   public activeRouteList:string[] = [];
   public translatedRoutes: WritableSignal<string[]> = signal<string[]>([]);
   public translatedRoutesMap: WritableSignal<Record<string,string>> = signal<Record<string,string>>({});
