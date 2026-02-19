@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { BlogMetaInfo } from '../models/meta-info';
 import { DatePipe } from '@angular/common';
-import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltip, NgbAccordionItem } from '@ng-bootstrap/ng-bootstrap';
 import { Meta, Title } from '@angular/platform-browser';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { LanguageValues } from '../../language-values';
 
 @Component({
   selector: 'app-blog-typing',
   standalone: true,
-  imports: [DatePipe, NgbTooltip],
+  imports: [DatePipe, NgbTooltip, NgbAccordionItem, RouterModule],
   templateUrl: './blog-typing.component.html',
   styleUrl: './blog-typing.component.scss'
 })
@@ -18,7 +19,14 @@ export class BlogTypingComponent {
     lastUpdated: new Date("2026-02-18")
   };
 
-  public constructor(private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, private router:Router) {}
+  public get contactRoute():string {
+    return LanguageValues.routes['contact'][LanguageValues.language];
+  }
+  public get hostname():string {
+    return window.location.hostname;
+  }
+
+  public constructor(private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, public router:Router) {}
   
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(url => {
