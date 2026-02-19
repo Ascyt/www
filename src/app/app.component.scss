@@ -2,6 +2,10 @@
     display: flex;
     align-items: center;
 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
     background-color: var(--back-high);
     color: var(--front);
     box-shadow: 0 0 10px var(--back-high);
