@@ -1,0 +1,163 @@
+a {
+    text-decoration: none;
+}
+
+.overlay {
+    content: "";
+    position: absolute;
+    background-color: rgba(0,0,0,0.875);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 5px;
+    border: none;
+    transition: 0.2s;
+}
+
+.card {
+    border: 3px solid;
+    box-shadow: 0 0 10px rgba(0,0,0,0);
+    transition: 0.3s;
+    margin: 5px;
+    
+    .card-subtitle {
+        color: var(--link);
+
+        transition: 0.3s;
+    }
+
+    border-color: var(--front-mid);
+
+    .background-image>.overlay {
+        background-color: rgba(0,0,0,0.875);
+        transition: 0.3s;
+    }
+}
+
+.card:hover {
+    border: 3px solid var(--link);
+    transition: 0.2s;
+    
+    .card-subtitle {
+        color: var(--link-hover);
+
+        transition: 0.2s;
+    }
+
+    .background-image>.overlay {
+        background-color: rgba(0,0,0,0.75);
+        transition: 0.2s;
+    }
+
+
+    .card-url {
+        opacity: 1;
+        transition: 0.2s;
+        color: var(--link-hover);
+
+        &::after {
+            width: 100%; 
+        }
+    }
+}
+
+
+.background-image {
+    position: relative;
+    padding-right: 10px;
+    background-size: 100%;
+    background-position: center;
+    border-radius: 3px;
+    border: none;
+}
+
+.card-body {
+    padding: 50px;
+    min-width: 200px;
+    position: relative;
+    border: none;
+}
+
+.card-text {
+    color: var(--front-high);
+    overflow: auto;
+}
+
+.card-title {
+    position: relative;
+    z-index: 1;
+    color: var(--front);
+    font-weight: bolder;
+}
+
+.more-view {
+    .card-title {
+        text-align: center;
+        color: #808080;
+        font-size: 1em;
+    }
+
+    background-color: var(--back-low);
+    border-color: var(--back-low);
+
+    &:hover {
+        border-color: var(--mid);
+        box-shadow: 0 0 20px var(--front-low) !important;
+        transition: 0.2s;
+    }
+}
+
+.card-url {
+    font-style: italic;
+    font-size: 0.75em;
+
+    color: var(--link);
+    opacity: 1;
+    transition: 0.3s;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+
+    width: fit-content;
+
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 1px; // Adjust the thickness of the underline
+        background-color: var(--link-hover);
+        transition: width 0.3s ease-in-out;
+    }
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+.card.light-theme {
+    box-shadow: 0 0 25px rgba(0,0,0,0.125);
+    transition: 0.3s;
+
+    &:hover {
+        box-shadow: 0 0 20px var(--link-hover);
+        transition: 0.2s;
+    }
+
+    
+    .background-image>.overlay {
+        background-color: rgba(255,255,255,.875);
+        transition: 0.3s;
+    }
+}
+.card.dark-theme {
+    box-shadow: none;
+    transition: 0.3s;
+
+    &:hover {
+        box-shadow: 0 0 20px var(--link-hover);
+        transition: 0.2s;
+    }
+}
