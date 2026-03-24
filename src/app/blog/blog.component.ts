@@ -5,6 +5,7 @@ import { LanguageValues } from '../language-values';
 import { ThemeSwitcherService } from '../theme-switcher/theme-switcher.service';
 import { BlogMetaInfo } from './models/meta-info';
 import { BlogTypingComponent } from './blog-typing/blog-typing.component';
+import { BlogWingsComponent } from './blog-wings/blog-wings.component';
 
 interface Blog {
   name: string;
@@ -52,8 +53,10 @@ export class BlogComponent {
   }
 
   blogs: Blog[] = this.language === 'de' ? [
-    {name: '[EN] A Guide to Fast Typing', description: 'A comprehensive guide to learning to type quickly on a computer keyboard.', routerLink: 'typing', metaInfo: BlogTypingComponent.metaInfo, image: 'assets/images/blog/typing/typing.jpg'},
+    {name: '[EN] Human Wings', description: 'Exploring the physical, evolutionary, and societal implications. of the hypothetical winged person.', routerLink: 'typing', metaInfo: BlogTypingComponent.metaInfo, image: 'assets/images/blog/wings/icon.png'},
+    {name: '[EN] A Guide to Fast Typing', description: 'A comprehensive guide to learning to type quickly on a computer keyboard.', routerLink: 'typing', metaInfo: BlogWingsComponent.metaInfo, image: 'assets/images/blog/typing/typing.jpg'}
   ] : [
-    {name: 'A Guide to Fast Typing', description: 'A comprehensive guide to learning to type quickly on a computer keyboard.', routerLink: 'typing', metaInfo: BlogTypingComponent.metaInfo, image: 'assets/images/blog/typing/typing.jpg'},
+    {name: 'Human Wings', description: 'Exploring the physical, evolutionary, and societal implications of the hypothetical winged person.', routerLink: 'wings', metaInfo: BlogWingsComponent.metaInfo, image: 'assets/images/blog/wings/icon.png'},
+    {name: 'A Guide to Fast Typing', description: 'A comprehensive guide to learning to type quickly on a computer keyboard.', routerLink: 'typing', metaInfo: BlogTypingComponent.metaInfo, image: 'assets/images/blog/typing/typing.jpg'}
   ];
 }

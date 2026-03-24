@@ -20,6 +20,7 @@ export class LanguageValues {
     'home': { 'en': 'Home', 'de': 'Startseite' },
     'blog': { 'en': 'Blog', 'de': 'Blog' },
     'blog/typing': { 'en': 'Fast Typing' },
+    'blog/wings': { 'en': 'Human Wings' },
     'contact': { 'en': 'Contact', 'de': 'Kontakt' },
     'projects': { 'en': 'Projects', 'de': 'Projekte' },
     'about': { 'en': 'About', 'de': 'Über Mich' },

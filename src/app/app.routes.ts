@@ -10,6 +10,7 @@ import { SecretComponent } from './secret/secret.component';
 import { LanguageValues } from './language-values';
 import { BlogComponent } from './blog/blog.component';
 import { BlogTypingComponent } from './blog/blog-typing/blog-typing.component';
+import { BlogWingsComponent } from './blog/blog-wings/blog-wings.component';
 
 const home:string = LanguageValues.routes['home'][LanguageValues.language];
 const blog:string = LanguageValues.routes['blog'][LanguageValues.language];
@@ -26,6 +27,7 @@ export const routes: Routes = [
     {path: home, component: HomeComponent},
     {path: blog, component: BlogComponent},
     {path: `${blog}/typing`, component: BlogTypingComponent},
+    {path: `${blog}/wings`, component: BlogWingsComponent},
     {path: contact, component: ContactComponent},
     {path: projects, component: ProjectsComponent},
     {path: `${projects}/smsh`, component:RedirectingComponent, canActivate: [RedirectGuard], data: {externalUrl: 'https://smsh.ascyt.com/'}},
