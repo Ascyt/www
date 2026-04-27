@@ -22,6 +22,7 @@ export class MoreProjectsViewComponent {
   public readonly language:string = LanguageValues.language;
 
   projects:Project[] = this.language === 'de' ? [
+    {name: 'SMSH', description: 'Einfache, aber leistungsstarke Markup-Sprache, die zu HTML kompiliert.', url:'https://smsh.ascyt.com/'},
     {name: '4D-Projektions-Spielplatz', description: 'Orthographische Darstellung eines 4-dimensionalen Tesserakts mit Rotationsoptionen. Vorgänger meines 4D-Simulationsprojekts.', url:'https://ascyt.itch.io/4d-projection-playground'},
     {name: 'ezgpt', description: 'Intuitive und einfach zu verwendende Python-Bibliothek für die Nutzung der OpenAI-API. Kann sein dass es noch funktioniert, dran arbeiten tue ich aber nicht mehr.', url:'https://pypi.org/project/ezgpt'},
     {name: 'Textwerkzeuge', description: 'Kleine Sammlung nützlicher Textwerkzeuge.', url:'https://tt.ascyt.com/'},
@@ -37,6 +38,7 @@ export class MoreProjectsViewComponent {
     {name: 'Minesweeper Musteranalyse', description: 'Einfaches Skript, welches Minesweeper-Simulationen durchführt, um zu sehen, wie oft jedes Muster auftritt.', url:'https://github.com/Ascyt/Minesweeper-pattern-prevalence'},
     {name: 'Der Eisberg', description: '???', url: 'https://the-iceberg.ascyt.com/'},
   ] : [
+    {name: 'SMSH', description: 'Simple but powerful markup language that compiles to HTML.', url:'https://smsh.ascyt.com/'},
     {name: '4D Projection Playground', description: 'Orthographic projection of a 4-dimensional tesseract with rotation options. Predecessor to my 4D Simulation project.', url:'https://ascyt.itch.io/4d-projection-playground'},
     {name: 'ezgpt', description: 'Intuitive and easy-to-use Python library for usage of OpenAI\'s API. Might still work, I\'m not maintaining it anymore though.', url:'https://pypi.org/project/ezgpt'},
     {name: 'Text Tools', description: 'A collection of useful text tools.', url:'https://tt.ascyt.com/'},
