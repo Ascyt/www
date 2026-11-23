@@ -1,5 +1,8 @@
 a {
     text-decoration: none;
+    &::after {
+        display: none;
+    }
 }
 
 .overlay {
@@ -20,6 +23,7 @@ a {
     box-shadow: 0 0 10px rgba(0,0,0,0);
     transition: 0.3s;
     margin: 5px;
+    text-decoration: none;
     
     .card-subtitle {
         color: var(--link);
@@ -77,6 +81,7 @@ a {
     min-width: 200px;
     position: relative;
     border: none;
+    text-decoration: none;
 }
 
 .card-text {
