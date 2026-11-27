@@ -1,16 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-redirecting',
-  standalone: true,
-  imports: [],
-  templateUrl: './redirecting.component.html',
-  styleUrl: './redirecting.component.scss'
+    selector: 'app-redirecting',
+    imports: [],
+    templateUrl: './redirecting.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './redirecting.component.scss'
 })
 export class RedirectingComponent {
-  constructor(private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, private router:Router) { }
+  private readonly titleService = inject(Title);
+  private readonly metaService = inject(Meta);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly router = inject(Router);
 
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(url => {  

@@ -1,21 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ThemeSwitcherService } from '../theme-switcher/theme-switcher.service';
-import { CommonModule } from '@angular/common';
+
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LanguageValues } from '../language-values';
 
 @Component({
-  selector: 'app-contact',
-  standalone: true,
-  imports: [NgbModule, CommonModule],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+    selector: 'app-contact',
+    imports: [NgbModule],
+    templateUrl: './contact.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
-  public constructor(public themeSwitcherService:ThemeSwitcherService, 
-    private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, private router:Router) {}
+  public readonly themeSwitcherService = inject(ThemeSwitcherService);
+  private readonly titleService = inject(Title);
+  private readonly metaService = inject(Meta);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly router = inject(Router);
 
   public readonly language:string = LanguageValues.language;
  

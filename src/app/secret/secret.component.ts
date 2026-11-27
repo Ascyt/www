@@ -1,19 +1,22 @@
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+
 import { saveAs } from 'file-saver';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LanguageValues } from '../language-values';
  
 @Component({
-  selector: 'app-secret',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './secret.component.html',
-  styleUrl: './secret.component.scss'
+    selector: 'app-secret',
+    imports: [],
+    templateUrl: './secret.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './secret.component.scss'
 })
 export class SecretComponent {
-  constructor(private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, private router:Router) { }
+  private readonly titleService = inject(Title);
+  private readonly metaService = inject(Meta);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly router = inject(Router);
 
   public readonly language:string = LanguageValues.language;
 

@@ -1,5 +1,4 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { NgbModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -23,17 +22,21 @@ interface Project {
 }
 
 @Component({
-  selector: 'app-projects',
-  standalone: true,
-  imports: [CommonModule, NgbModule, RouterModule],
-  templateUrl: './projects.component.html',
-  styleUrl: './projects.component.scss'
+    selector: 'app-projects',
+    imports: [NgbModule, RouterModule],
+    templateUrl: './projects.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './projects.component.scss'
 })
 export class ProjectsComponent {
   Type = Type;
 
-  public constructor(public themeSwitcher:ThemeSwitcherService, public modalService:NgbModal, 
-    private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, private router:Router) {}
+  public readonly themeSwitcher = inject(ThemeSwitcherService);
+  public readonly modalService = inject(NgbModal);
+  private readonly titleService = inject(Title);
+  private readonly metaService = inject(Meta);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly router = inject(Router);
 
   public readonly language = LanguageValues.language;
 

@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 import { LanguageValues } from '../language-values';
 
 @Component({
-  selector: 'app-about',
-  standalone: true,
-  imports: [NgbModule, RouterModule],
-  templateUrl: './about.component.html',
-  styleUrl: './about.component.scss'
+    selector: 'app-about',
+    imports: [NgbModule, RouterModule],
+    templateUrl: './about.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './about.component.scss'
 })
 export class AboutComponent {
-  constructor(private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, private router: Router) { }
+  private readonly titleService = inject(Title);
+  private readonly metaService = inject(Meta);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly router = inject(Router);
 
   public readonly language:string = LanguageValues.language;
 

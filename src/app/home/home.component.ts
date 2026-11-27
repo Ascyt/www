@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -6,14 +6,17 @@ import { SpinningTesseractComponent } from '../spinning-tesseract/spinning-tesse
 import { LanguageValues } from '../language-values';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [RouterModule, NgbModule, SpinningTesseractComponent],
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+    selector: 'app-home',
+    imports: [RouterModule, NgbModule, SpinningTesseractComponent],
+    templateUrl: './home.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  constructor(private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, private router:Router) { }
+  private readonly titleService = inject(Title);
+  private readonly metaService = inject(Meta);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly router = inject(Router);
 
   public readonly language:string = LanguageValues.language;
   private readonly birthDate = new Date('2007-04-25');

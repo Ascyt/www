@@ -3,34 +3,38 @@
     <a class="navbar-brand logo" [href]="'/' + translatedRoutesPlain['home']">
       <img class="d-inline-block align-text-top" src="assets/images/logo.png" alt="Logo" />
     </a>
-    <button class="navbar-toggler" [ngClass]="themeSwitcher.isLightTheme ? 'dark' : 'light'" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarNav">
+    <button class="navbar-toggler" [class.dark]="themeSwitcher.isLightTheme" [class.light]="!themeSwitcher.isLightTheme" type="button" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div [ngbCollapse]="isCollapsed" class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         @for (route of routes; track route; let i = $index) {
-          <li class="nav-item" [ngClass]="{'active': firstRoute === route}">
-            <a [routerLink]="'/' + translatedRoutesPlain[route]" class="nav-link" [ngClass]="{'active': highestRoute === route}">{{routeTitlePlain[route] || getRouteTitle(route)}}</a>
-            
+          <li class="nav-item" [class.active]="firstRoute === route">
+            <a [routerLink]="'/' + translatedRoutesPlain[route]" class="nav-link" [class.active]="highestRoute === route">{{routeTitlePlain[route] || getRouteTitle(route)}}</a>
+
             @if (activeRouteList[0] === route && activeRouteList.length > 0) {
               @for (subRoute of activeRouteListSkipFirst; track subRoute; let ii = $index) {
                 <span class="nav-link-sub-seperator">/</span>
 
-                <a [routerLink]="'/' + routeUrlsUntilIndex(ii+1)" class="nav-link-sub" [ngClass]="{'active': highestRoute === subRoute}">{{getActiveRouteTitle(ii+1)}}</a>
+                <a [routerLink]="'/' + routeUrlsUntilIndex(ii+1)" class="nav-link-sub" [class.active]="highestRoute === subRoute">{{getActiveRouteTitle(ii+1)}}</a>
               }
             }
           </li>
         }
 
-        <li *ngIf="router.url === '/' + (notFoundRoute)" class="nav-item" routerLinkActive="active">
-          <a [routerLink]="'/' + (notFoundRoute)" class="nav-link active" style="color:orange;">{{getRouteTitle('NotFound')}}</a>
-        </li>
+        @if (router.url === '/' + (notFoundRoute)) {
+          <li class="nav-item" routerLinkActive="active">
+            <a [routerLink]="'/' + (notFoundRoute)" class="nav-link active" style="color:orange;">{{getRouteTitle('NotFound')}}</a>
+          </li>
+        }
       </ul>
     </div>
-    <div *ngIf="!isCollapsed" class="d-flex align-items-center">
-      <app-language-switcher />
-      <app-theme-switcher (themeChanged)="toggleTheme()" />
-    </div>
+    @if (!isCollapsed) {
+      <div class="d-flex align-items-center">
+        <app-language-switcher />
+        <app-theme-switcher (themeChanged)="toggleTheme()" />
+      </div>
+    }
   </div>
 </nav>
 <div class="container">
@@ -39,6 +43,6 @@
     <p class="text-left notice">Lizensiert unter <a href="/lizenz" target="_blank" ngbTooltip="https://github.com/Ascyt/www/blob/main/LICENSE">GPL-3.0 (Englisch)</a> • <a href="/quellcode" ngbTooltip="https://github.com/Ascyt/www" target="_blank">Quellcode</a> • <a href="/spenden" ngbTooltip="https://ko-fi.com/Ascyt" target="_blank">♡ Spenden ♡</a></p>
   }
   @else {
-    <p class="text-left notice">Licensed under <a href="/license" target="_blank" ngbTooltip="https://github.com/Ascyt/www/blob/main/LICENSE">GPL-3.0</a> • <a href="/source" ngbTooltip="https://github.com/Ascyt/www" target="_blank">Source Code</a> • <a href="/donate" ngbTooltip="https://ko-fi.com/Ascyt" target="_blank">♡ Donate ♡</a></p>
-  }
+  <p class="text-left notice">Licensed under <a href="/license" target="_blank" ngbTooltip="https://github.com/Ascyt/www/blob/main/LICENSE">GPL-3.0</a> • <a href="/source" ngbTooltip="https://github.com/Ascyt/www" target="_blank">Source Code</a> • <a href="/donate" ngbTooltip="https://ko-fi.com/Ascyt" target="_blank">♡ Donate ♡</a></p>
+}
 </div>

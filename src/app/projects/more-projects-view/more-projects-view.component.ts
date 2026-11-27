@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LanguageValues } from '../../language-values';
 
@@ -10,14 +10,14 @@ interface Project {
 }
 
 @Component({
-  selector: 'app-more-projects-view',
-  standalone: true,
-  imports: [NgbModule, CommonModule],
-  templateUrl: './more-projects-view.component.html',
-  styleUrl: './more-projects-view.component.scss'
+    selector: 'app-more-projects-view',
+    imports: [NgbModule],
+    templateUrl: './more-projects-view.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './more-projects-view.component.scss'
 })
 export class MoreProjectsViewComponent {
-  constructor(public activeModal: NgbActiveModal) {}
+  public readonly activeModal = inject(NgbActiveModal);
 
   public readonly language:string = LanguageValues.language;
 

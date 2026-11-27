@@ -1,22 +1,22 @@
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
-import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+
 import { LanguageValues } from '../language-values';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
-  selector: 'app-language-switcher',
-  standalone: true,
-  templateUrl: './language-switcher.component.html',
-  styleUrls: ['./language-switcher.component.scss'],
-  imports: [NgbModule, FormsModule, CommonModule]
+    selector: 'app-language-switcher',
+    templateUrl: './language-switcher.component.html',
+    styleUrls: ['./language-switcher.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [NgbModule, FormsModule]
 })
 export class LanguageSwitcherComponent {
   public readonly language:string = LanguageValues.language;
   public pathnameAfterClickPlain: string = '';
 
-  constructor(private router: Router) {}
+  private readonly router = inject(Router);
 
   ngOnInit():void {
     // Load svgs to cache

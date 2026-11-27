@@ -5,6 +5,6 @@
         [class]="hasPressedButton ? (delayedIsLightTheme ? 'light-theme': 'dark-theme') : themeSwitcher.themeClass"
         (mousedown)="themeSwitcherMouseDown()"
         (dragstart)="themeSwitcherMouseUp()"
-        [ngClass]="{ 'pressed': isPressingButton || hasPressedButton }"
+        [class.pressed]="isPressingButton || hasPressedButton"
         (click)="toggleTheme()" />
 </div>

@@ -122,10 +122,14 @@ a,.a {
     transition: 0.2s;
 }
 
-.list-group-item-action:hover {
-    background-color: var(--back-mid);
-    color: var(--front);
-    transition: 0.2s;
+.list-group-item-action {
+    // Bootstrap's own hover/active selectors (`:not(.active):hover`) out-specify a plain `:hover` override,
+    // so theme them through its CSS variables instead.
+    --bs-list-group-action-color: var(--front);
+    --bs-list-group-action-hover-color: var(--front);
+    --bs-list-group-action-hover-bg: var(--back-mid);
+    --bs-list-group-action-active-color: var(--front);
+    --bs-list-group-action-active-bg: var(--back-mid);
 }
 
 .list-group-item-action:active,

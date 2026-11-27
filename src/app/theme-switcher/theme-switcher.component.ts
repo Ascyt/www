@@ -2,18 +2,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { ThemeSwitcherService } from './theme-switcher.service';
 
-import { Component, EventEmitter, HostListener, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, output, ChangeDetectionStrategy, inject } from '@angular/core';
 
 @Component({
-  selector: 'app-theme-switcher',
-  standalone: true,
-  templateUrl: './theme-switcher.component.html',
-  styleUrls: ['./theme-switcher.component.scss'],
-  imports: [NgbModule, FormsModule, CommonModule]
+    selector: 'app-theme-switcher',
+    templateUrl: './theme-switcher.component.html',
+    styleUrls: ['./theme-switcher.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    imports: [NgbModule, FormsModule],
+    host: {
+        '(document:mouseup)': 'onDocumentMouseUp()'
+    }
 })
 export class ThemeSwitcherComponent {
-  @Output() themeChanged = new EventEmitter<boolean>();
+  readonly themeChanged = output<void>();
 
   public isPressingButton:boolean = false;
   public hasPressedButton:boolean = false;
@@ -21,7 +23,7 @@ export class ThemeSwitcherComponent {
 
   public delayedIsLightTheme:boolean|null = null;
 
-  constructor(public themeSwitcher: ThemeSwitcherService) {}
+  public readonly themeSwitcher = inject(ThemeSwitcherService);
 
   ngOnInit():void {
     // Load svgs to cache
@@ -33,7 +35,6 @@ export class ThemeSwitcherComponent {
     });
   }
 
-  @HostListener('document:mouseup', ['$event'])
   onDocumentMouseUp():void {
     this.themeSwitcherMouseUp();
   }

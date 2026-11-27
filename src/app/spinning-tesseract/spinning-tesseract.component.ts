@@ -1,18 +1,20 @@
-import { Component, ElementRef, signal, Signal } from '@angular/core';
+import { Component, ElementRef, signal, Signal, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Vector4 } from './vector4';
 import { RotationalPlane } from './rotational-plane';
 import { Vector2 } from './vector2';
 import { rotateVectorAroundPlane } from './matrix-multiplication';
 
 @Component({
-  selector: 'app-spinning-tesseract',
-  standalone: true,
-  imports: [],
-  templateUrl: './spinning-tesseract.component.html',
-  styleUrl: './spinning-tesseract.component.scss'
+    selector: 'app-spinning-tesseract',
+    imports: [],
+    templateUrl: './spinning-tesseract.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './spinning-tesseract.component.scss'
 })
 export class SpinningTesseractComponent {
-  constructor(private elementRef:ElementRef) {
+  private readonly elementRef = inject(ElementRef);
+
+  constructor() {
     this.startAnimation();
   }
 

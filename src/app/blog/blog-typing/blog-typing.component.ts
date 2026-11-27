@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { BlogMetaInfo } from '../models/meta-info';
 import { DatePipe } from '@angular/common';
 import { NgbTooltip } from '@ng-bootstrap/ng-bootstrap';
@@ -8,11 +8,11 @@ import { LanguageValues } from '../../language-values';
 import { BlogComponent } from '../blog.component';
 
 @Component({
-  selector: 'app-blog-typing',
-  standalone: true,
-  imports: [NgbTooltip, RouterModule],
-  templateUrl: './blog-typing.component.html',
-  styleUrl: './blog-typing.component.scss'
+    selector: 'app-blog-typing',
+    imports: [NgbTooltip, RouterModule],
+    templateUrl: './blog-typing.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './blog-typing.component.scss'
 })
 export class BlogTypingComponent {
   public static metaInfo:BlogMetaInfo = {
@@ -34,7 +34,10 @@ export class BlogTypingComponent {
     return LanguageValues.language;
   }
 
-  public constructor(private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, public router:Router) {}
+  private readonly titleService = inject(Title);
+  private readonly metaService = inject(Meta);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  public readonly router = inject(Router);
   
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(url => {

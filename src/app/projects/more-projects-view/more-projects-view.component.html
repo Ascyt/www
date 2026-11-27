@@ -1,41 +1,43 @@
 @if (language === 'de') {
-    <div class="modal-header">
-        <h4 class="modal-title">Weitere Projekte (nicht chronologisch)</h4> 
-        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+  <div class="modal-header">
+    <h4 class="modal-title">Weitere Projekte (nicht chronologisch)</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 }
 @else {
-    <div class="modal-header">
-        <h4 class="modal-title">More projects (not chronological)</h4> 
-        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
+<div class="modal-header">
+  <h4 class="modal-title">More projects (not chronological)</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
 }
 <div class="modal-body">
-    <div ngbAccordion [closeOthers]="true" class="accordion mb-2">
-        <div ngbAccordionItem class="accordion-item" *ngFor="let project of projects">
-            <h2 ngbAccordionHeader class="accordion-header">
-                <button ngbAccordionButton class="accordion-button" >{{project.name}}</button>
-            </h2>
-            <div ngbAccordionCollapse class="accordion-collapse">
-                <div ngbAccordionBody class="accordion-body">
-                    <p>{{project.description}}</p>
-                    <a target="_blank" [href]="project.url">{{project.url}}</a>
-                </div>
-            </div>
+  <div ngbAccordion [closeOthers]="true" class="accordion mb-2">
+    @for (project of projects; track project) {
+      <div ngbAccordionItem class="accordion-item">
+        <h2 ngbAccordionHeader class="accordion-header">
+          <button ngbAccordionButton class="accordion-button" >{{project.name}}</button>
+        </h2>
+        <div ngbAccordionCollapse class="accordion-collapse">
+          <div ngbAccordionBody class="accordion-body">
+            <p>{{project.description}}</p>
+            <a target="_blank" [href]="project.url">{{project.url}}</a>
+          </div>
         </div>
-    </div>
+      </div>
+    }
+  </div>
 
-@if (language === 'de') {
+  @if (language === 'de') {
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Schließen    </button>
-    </div>    
-}
-@else {
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Close</button>
+      <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Schließen    </button>
     </div>
+  }
+  @else {
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close('Close click')">Close</button>
+  </div>
 }

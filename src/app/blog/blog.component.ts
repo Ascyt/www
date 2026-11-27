@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { LanguageValues } from '../language-values';
@@ -18,11 +18,11 @@ interface Blog {
 }
 
 @Component({
-  selector: 'app-blog',
-  standalone: true,
-  imports: [RouterModule],
-  templateUrl: './blog.component.html',
-  styleUrl: './blog.component.scss'
+    selector: 'app-blog',
+    imports: [RouterModule],
+    templateUrl: './blog.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    styleUrl: './blog.component.scss'
 })
 export class BlogComponent {
   public get language():string {
@@ -33,7 +33,11 @@ export class BlogComponent {
     return window.location.toString();
   }
 
-  public constructor(private titleService: Title, private metaService: Meta, private activatedRoute: ActivatedRoute, private router:Router, public themeSwitcher: ThemeSwitcherService) {}
+  private readonly titleService = inject(Title);
+  private readonly metaService = inject(Meta);
+  private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  public readonly themeSwitcher = inject(ThemeSwitcherService);
 
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(url => {

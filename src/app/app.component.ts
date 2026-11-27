@@ -1,5 +1,4 @@
-import { Component, HostListener, signal, WritableSignal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, signal, WritableSignal, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Router, RouterOutlet, RouterModule, RouterLinkActive, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -9,11 +8,15 @@ import { LanguageValues } from './language-values';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule, RouterOutlet, ThemeSwitcherComponent, RouterModule, RouterLinkActive, NgbModule, LanguageSwitcherComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+    selector: 'app-root',
+    imports: [RouterOutlet, ThemeSwitcherComponent, RouterModule, RouterLinkActive, NgbModule, LanguageSwitcherComponent],
+    templateUrl: './app.component.html',
+    changeDetection: ChangeDetectionStrategy.Eager,
+    host: {
+        '(window:mousedown)': 'handleMouseDown($event)',
+        '(window:keydown)': 'handleKeyDown($event)'
+    },
+    styleUrl: './app.component.scss'
 })
 export class AppComponent {
   isCollapsed:boolean = false;
@@ -56,7 +59,12 @@ export class AppComponent {
     return this.activeRouteList[index ?? this.activeRouteList.length - 1] || '';
   }
 
-  constructor(public router:Router, public themeSwitcher:ThemeSwitcherService, private metaService: Meta, private activatedRoute: ActivatedRoute) {
+  public readonly router = inject(Router);
+  public readonly themeSwitcher = inject(ThemeSwitcherService);
+  private readonly metaService = inject(Meta);
+  private readonly activatedRoute = inject(ActivatedRoute);
+
+  constructor() {
     this.updateTheme();
     
     this.router.events.subscribe((event) => {
@@ -117,7 +125,6 @@ export class AppComponent {
     return this.routeTitleCache()[route] || route;
   }
 
-  @HostListener('window:mousedown', ['$event'])
   handleMouseDown(event:MouseEvent):void {
     if (document.body.className === 'what' && event.button === 2) {
       event.preventDefault();
@@ -127,7 +134,6 @@ export class AppComponent {
       return;
     }
   }
-  @HostListener('window:keydown', ['$event'])
   handleKeyDown(event:KeyboardEvent):void {
     if (document.body.className === 'what') {
       event.preventDefault();

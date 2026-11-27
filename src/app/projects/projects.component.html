@@ -1,32 +1,34 @@
 @if (language === 'de') {
-    <h2 class="mb-2">Projekte</h2>
+  <h2 class="mb-2">Projekte</h2>
 
-    <p>Die meisten meiner Projekte sind <a href="https://de.wikipedia.org/wiki/Open_Source" target="_blank" ngbTooltip="https://de.wikipedia.org/wiki/Open_Source">Open Source</a> und der Quellcode dafür ist auf meinem <a href="/github" target="_blank" ngbTooltip="https://github.com/Ascyt">GitHub</a> zu finden.</p>
+  <p>Die meisten meiner Projekte sind <a href="https://de.wikipedia.org/wiki/Open_Source" target="_blank" ngbTooltip="https://de.wikipedia.org/wiki/Open_Source">Open Source</a> und der Quellcode dafür ist auf meinem <a href="/github" target="_blank" ngbTooltip="https://github.com/Ascyt">GitHub</a> zu finden.</p>
 
-    <p>
-        <strong>Hinweis</strong>: Die meisten dieser Projekte sind nur auf Englisch verfügbar.
-    </p>
+  <p>
+    <strong>Hinweis</strong>: Die meisten dieser Projekte sind nur auf Englisch verfügbar.
+  </p>
 }
 @else {
-    <h2 class="mb-2">Projects</h2>
+<h2 class="mb-2">Projects</h2>
 
-    <p>Most of my projects are <a href="https://en.wikipedia.org/wiki/Open_source" target="_blank" ngbTooltip="https://en.wikipedia.org/wiki/Open_source">Open Source</a> and the source code for them can be found in my <a href="/github" target="_blank" ngbTooltip="https://github.com/Ascyt">GitHub</a>.</p>
+<p>Most of my projects are <a href="https://en.wikipedia.org/wiki/Open_source" target="_blank" ngbTooltip="https://en.wikipedia.org/wiki/Open_source">Open Source</a> and the source code for them can be found in my <a href="/github" target="_blank" ngbTooltip="https://github.com/Ascyt">GitHub</a>.</p>
 }
 <!-- Grid of projects -->
 <div class="row">
-    <div class="col-md-4" *ngFor="let project of projects">
+  @for (project of projects; track project) {
+    <div class="col-md-4">
       <a target="_blank" (click)="onProjectClick(project, $event)" [href]="project.url" >
-          <div [class]="'card ' + themeSwitcher.themeClass" 
-          [ngClass]="{'more-view':project.type === Type.MoreView}">
-              <div class="background-image" [style.background-image]="'url(' + project.image + ')'">
-                  <div class="overlay"></div>
-                  <div class="card-body">
-                      <h5 class="card-title">{{ project.name }}</h5>
-                      <h6 class="card-url mb-2">{{ project.url }}</h6>
-                      <p class="card-text">{{ project.description }}</p>
-                  </div>
-              </div>    
+        <div [class]="'card ' + themeSwitcher.themeClass"
+          [class.more-view]="project.type === Type.MoreView">
+          <div class="background-image" [style.background-image]="'url(' + project.image + ')'">
+            <div class="overlay"></div>
+            <div class="card-body">
+              <h5 class="card-title">{{ project.name }}</h5>
+              <h6 class="card-url mb-2">{{ project.url }}</h6>
+              <p class="card-text">{{ project.description }}</p>
+            </div>
           </div>
+        </div>
       </a>
     </div>
-  </div>
+  }
+</div>
